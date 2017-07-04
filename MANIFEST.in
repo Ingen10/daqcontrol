@@ -1,0 +1,2 @@
+include ./daqcontrol/*.ui
+include ./Makefile
