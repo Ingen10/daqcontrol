@@ -70,6 +70,7 @@ class MyApp(QtGui.QMainWindow, daq_control.Ui_mainWindow):
         self.Bupdate.clicked.connect(self.Digital_ports)
         self.Bset_voltage.clicked.connect(self.set_DAC)
         self.Bplay.clicked.connect(self.play)
+        self.mode_encoder.currentIndexChanged.connect(self.status_resolution)
         try:
             self.statusBar.showMessage("Hardware Version: %s   Firmware Version: %s" % (self.daq.hw_ver[1], self.daq.fw_ver))
         except:
@@ -145,10 +146,7 @@ class MyApp(QtGui.QMainWindow, daq_control.Ui_mainWindow):
         self.counter_result.setText(str(self.daq.get_counter(0)))
 
     def start_capture(self):
-        try:
-            self.daq.init_capture(int(self.lEPeriod.text()))
-        except:
-            self.daq.init_capture(2000)
+        self.daq.init_capture(self.reference_period.value())
 
     def stop_capture(self):
         self.daq.stop_capture()
@@ -160,10 +158,7 @@ class MyApp(QtGui.QMainWindow, daq_control.Ui_mainWindow):
         self.daq.stop_pwm()
 
     def set_pwm(self):
-        #  self.get_counter.Clear()
-        #  self.get_capture.Clear()
         self.period = self.periodPWM.value()
-        self.periodPWM.setValue(self.period)
         self.duty = self.dutyPWM.value() * 1023 / 100
         self.daq.init_pwm(self.duty, self.period)
 
@@ -171,32 +166,11 @@ class MyApp(QtGui.QMainWindow, daq_control.Ui_mainWindow):
         self.stop_pwm()
         self.set_pwm()
 
-    def start_encoder(self):
-        if self.mode_encoder.currentIndex():
-            self.resolution_value = 0
-        else:
-            if int(self.resolution_encoder.text()):
-                self.resolution_value = int(self.resolution_encoder.text())
-                if self.resolution_value < 0 or self.resolution_value > 65535:
-                        print('Error en la resolucion')
-                        '''
-                        dlg = wx.MessageDialog(
-                            self,
-                            "Resolution can not be neither greater than 65535 \
-                            nor lower than 1", "Error!",
-                            wx.OK | wx.ICON_WARNING)
-                        dlg.ShowModal()
-                        dlg.Destroy()
-                        return
-                        '''
-            else:
-                dlg = wx.MessageDialog(
-                    self, "Not a valid resolution", "Error!",
-                    wx.OK | wx.ICON_WARNING)
-                dlg.ShowModal()
-                dlg.Destroy()
+    def status_resolution(self):
+        self.resolution_encoder.setEnabled(False if self.mode_encoder.currentIndex() else True)
 
-        self.daq.init_encoder(self.resolution_value)
+    def start_encoder(self):     
+        self.daq.init_encoder(self.resolution_encoder.value())
 
     def stop_encoder(self):
         self.daq.stop_encoder()
@@ -210,10 +184,6 @@ class MyApp(QtGui.QMainWindow, daq_control.Ui_mainWindow):
         for i in range(6):
             self.daq.set_pio_dir((i+1), ports_mode[i].currentIndex())
             if ports_mode[i].currentIndex():
-                '''
-                value = 1 if buttonout[i].isChecked() else 0
-                self.daq.set_pio((i+1), value)
-                '''
                 self.daq.set_pio((i+1), slider_out[i].value())
 
             else:
@@ -222,12 +192,6 @@ class MyApp(QtGui.QMainWindow, daq_control.Ui_mainWindow):
                 palette.setColor(QPalette.WindowText, QtCore.Qt.green if value else QtCore.Qt.red)
                 display_out[i].setPalette(palette)
                 display_out[i].display(value)
-
-    def stateDO(self, q):
-        if q.isChecked():
-            q.setIcon(QIcon("./imagenes/switchoff.jpg"))
-        else:
-            q.setIcon(QIcon("./imagenes/switchon.jpg"))
 
 
 class Configuration(QtGui.QDialog, config.Ui_MainWindow):

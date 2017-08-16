@@ -1521,9 +1521,12 @@ selection-background-color: rgb(0, 170, 0);
               </property>
               <property name="minimumSize">
                <size>
-                <width>110</width>
+                <width>120</width>
                 <height>27</height>
                </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true"/>
               </property>
               <property name="text">
                <string>Start Encoder</string>
@@ -1546,7 +1549,7 @@ selection-background-color: rgb(0, 170, 0);
               </property>
               <property name="minimumSize">
                <size>
-                <width>110</width>
+                <width>120</width>
                 <height>27</height>
                </size>
               </property>
@@ -1565,7 +1568,7 @@ selection-background-color: rgb(0, 170, 0);
               </property>
               <property name="minimumSize">
                <size>
-                <width>145</width>
+                <width>120</width>
                 <height>27</height>
                </size>
               </property>
@@ -1591,7 +1594,7 @@ selection-background-color: rgb(0, 170, 0);
               </property>
               <property name="minimumSize">
                <size>
-                <width>145</width>
+                <width>120</width>
                 <height>27</height>
                </size>
               </property>
@@ -1610,18 +1613,24 @@ selection-background-color: rgb(0, 170, 0);
              </widget>
             </item>
             <item row="2" column="1">
-             <widget class="QLineEdit" name="resolution_encoder">
+             <widget class="QSpinBox" name="resolution_encoder">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Minimum">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
               <property name="minimumSize">
                <size>
-                <width>20</width>
+                <width>120</width>
                 <height>27</height>
                </size>
+              </property>
+              <property name="maximum">
+               <number>65535</number>
+              </property>
+              <property name="singleStep">
+               <number>1</number>
               </property>
              </widget>
             </item>
@@ -1637,115 +1646,6 @@ selection-background-color: rgb(0, 170, 0);
             <property name="fieldGrowthPolicy">
              <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
             </property>
-            <item row="0" column="1">
-             <widget class="QLabel" name="lEPeriod">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>110</width>
-                <height>27</height>
-               </size>
-              </property>
-              <property name="frameShape">
-               <enum>QFrame::StyledPanel</enum>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="1">
-             <widget class="QComboBox" name="cbTime">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>110</width>
-                <height>27</height>
-               </size>
-              </property>
-              <item>
-               <property name="text">
-                <string>Low time</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>High time</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Full period</string>
-               </property>
-              </item>
-             </widget>
-            </item>
-            <item row="2" column="1">
-             <widget class="QPushButton" name="Bstart_capture">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>105</width>
-                <height>27</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>Start Capture</string>
-              </property>
-              <property name="checkable">
-               <bool>true</bool>
-              </property>
-              <property name="autoRepeat">
-               <bool>false</bool>
-              </property>
-              <property name="autoExclusive">
-               <bool>false</bool>
-              </property>
-              <property name="autoDefault">
-               <bool>false</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="1">
-             <widget class="QPushButton" name="Bstop_capture">
-              <property name="enabled">
-               <bool>false</bool>
-              </property>
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>110</width>
-                <height>27</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>Stop Capture</string>
-              </property>
-              <property name="checkable">
-               <bool>false</bool>
-              </property>
-             </widget>
-            </item>
             <item row="0" column="0">
              <widget class="QLabel" name="label_26">
               <property name="sizePolicy">
@@ -1771,7 +1671,32 @@ selection-background-color: rgb(0, 170, 0);
               </property>
              </widget>
             </item>
-            <item row="1" column="0">
+            <item row="0" column="1">
+             <widget class="QLabel" name="lEPeriod">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>120</width>
+                <height>27</height>
+               </size>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="textInteractionFlags">
+               <set>Qt::LinksAccessibleByMouse</set>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="0">
              <widget class="QLabel" name="label_2">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -1793,6 +1718,143 @@ selection-background-color: rgb(0, 170, 0);
               </property>
               <property name="text">
                <string>Select width : </string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="1">
+             <widget class="QComboBox" name="cbTime">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>120</width>
+                <height>27</height>
+               </size>
+              </property>
+              <item>
+               <property name="text">
+                <string>Low time</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>High time</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Full period</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item row="3" column="1">
+             <widget class="QPushButton" name="Bstart_capture">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>120</width>
+                <height>27</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>Start Capture</string>
+              </property>
+              <property name="checkable">
+               <bool>true</bool>
+              </property>
+              <property name="autoRepeat">
+               <bool>false</bool>
+              </property>
+              <property name="autoExclusive">
+               <bool>false</bool>
+              </property>
+              <property name="autoDefault">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="1">
+             <widget class="QPushButton" name="Bstop_capture">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>120</width>
+                <height>27</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>Stop Capture</string>
+              </property>
+              <property name="checkable">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="label_31">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>100</width>
+                <height>27</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>Reference: </string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QSpinBox" name="reference_period">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>120</width>
+                <height>27</height>
+               </size>
+              </property>
+              <property name="maximum">
+               <number>1000000000</number>
+              </property>
+              <property name="singleStep">
+               <number>100</number>
+              </property>
+              <property name="value">
+               <number>2000</number>
               </property>
              </widget>
             </item>
@@ -1839,7 +1901,7 @@ selection-background-color: rgb(0, 170, 0);
               </property>
               <property name="minimumSize">
                <size>
-                <width>110</width>
+                <width>120</width>
                 <height>27</height>
                </size>
               </property>
@@ -1864,7 +1926,7 @@ selection-background-color: rgb(0, 170, 0);
               </property>
               <property name="minimumSize">
                <size>
-                <width>110</width>
+                <width>120</width>
                 <height>27</height>
                </size>
               </property>
@@ -1883,7 +1945,7 @@ selection-background-color: rgb(0, 170, 0);
               </property>
               <property name="minimumSize">
                <size>
-                <width>110</width>
+                <width>120</width>
                 <height>27</height>
                </size>
               </property>
@@ -1938,6 +2000,9 @@ selection-background-color: rgb(0, 170, 0);
                 <width>120</width>
                 <height>27</height>
                </size>
+              </property>
+              <property name="maximum">
+               <number>65535</number>
               </property>
              </widget>
             </item>
@@ -1995,7 +2060,7 @@ selection-background-color: rgb(0, 170, 0);
               </property>
               <property name="minimumSize">
                <size>
-                <width>110</width>
+                <width>120</width>
                 <height>27</height>
                </size>
               </property>
@@ -2020,7 +2085,7 @@ selection-background-color: rgb(0, 170, 0);
               </property>
               <property name="minimumSize">
                <size>
-                <width>110</width>
+                <width>120</width>
                 <height>27</height>
                </size>
               </property>
@@ -2039,7 +2104,7 @@ selection-background-color: rgb(0, 170, 0);
               </property>
               <property name="minimumSize">
                <size>
-                <width>110</width>
+                <width>120</width>
                 <height>27</height>
                </size>
               </property>
@@ -2098,7 +2163,7 @@ selection-background-color: rgb(0, 170, 0);
            </property>
            <property name="minimumSize">
             <size>
-             <width>145</width>
+             <width>120</width>
              <height>27</height>
             </size>
            </property>
@@ -2400,38 +2465,6 @@ selection-background-color: rgb(0, 170, 0);
    </hints>
   </connection>
   <connection>
-   <sender>Bstart_encoder</sender>
-   <signal>clicked(bool)</signal>
-   <receiver>resolution_encoder</receiver>
-   <slot>setDisabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>239</x>
-     <y>265</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>237</x>
-     <y>232</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>Bstop_encoder</sender>
-   <signal>clicked(bool)</signal>
-   <receiver>resolution_encoder</receiver>
-   <slot>setDisabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>237</x>
-     <y>298</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>237</x>
-     <y>232</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>cbD2</sender>
    <signal>currentIndexChanged(int)</signal>
    <receiver>Digital2</receiver>
@@ -2694,8 +2727,8 @@ selection-background-color: rgb(0, 170, 0);
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>132</x>
-     <y>266</y>
+     <x>235</x>
+     <y>282</y>
     </hint>
     <hint type="destinationlabel">
      <x>155</x>
@@ -2710,8 +2743,8 @@ selection-background-color: rgb(0, 170, 0);
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>206</x>
-     <y>253</y>
+     <x>235</x>
+     <y>282</y>
     </hint>
     <hint type="destinationlabel">
      <x>182</x>
@@ -2726,8 +2759,8 @@ selection-background-color: rgb(0, 170, 0);
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>134</x>
-     <y>264</y>
+     <x>235</x>
+     <y>282</y>
     </hint>
     <hint type="destinationlabel">
      <x>141</x>
