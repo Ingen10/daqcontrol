@@ -1427,7 +1427,7 @@ selection-background-color: rgb(0, 170, 0);
          <bool>false</bool>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>2</number>
         </property>
         <widget class="QWidget" name="page">
          <layout class="QHBoxLayout" name="horizontalLayout_3">
@@ -2219,8 +2219,7 @@ selection-background-color: rgb(0, 170, 0);
   <action name="actionConfig">
    <property name="icon">
     <iconset theme="document-properties">
-     <normaloff/>
-    </iconset>
+     <normaloff>../../Descargas/daqcontrol-master/daqcontrol</normaloff>../../Descargas/daqcontrol-master/daqcontrol</iconset>
    </property>
    <property name="text">
     <string>config</string>
@@ -2247,12 +2246,12 @@ selection-background-color: rgb(0, 170, 0);
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>115</x>
-     <y>159</y>
+     <x>242</x>
+     <y>265</y>
     </hint>
     <hint type="destinationlabel">
-     <x>120</x>
-     <y>159</y>
+     <x>246</x>
+     <y>298</y>
     </hint>
    </hints>
   </connection>
@@ -2263,12 +2262,12 @@ selection-background-color: rgb(0, 170, 0);
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>120</x>
-     <y>159</y>
+     <x>246</x>
+     <y>298</y>
     </hint>
     <hint type="destinationlabel">
-     <x>120</x>
-     <y>159</y>
+     <x>246</x>
+     <y>298</y>
     </hint>
    </hints>
   </connection>
@@ -2279,28 +2278,28 @@ selection-background-color: rgb(0, 170, 0);
    <slot>toggle()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>120</x>
-     <y>159</y>
+     <x>246</x>
+     <y>298</y>
     </hint>
     <hint type="destinationlabel">
-     <x>115</x>
-     <y>159</y>
+     <x>242</x>
+     <y>265</y>
     </hint>
    </hints>
   </connection>
   <connection>
    <sender>Bstart_counter</sender>
-   <signal>clicked(bool)</signal>
+   <signal>toggled(bool)</signal>
    <receiver>Bstop_counter</receiver>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>120</x>
-     <y>159</y>
+     <x>246</x>
+     <y>199</y>
     </hint>
     <hint type="destinationlabel">
-     <x>120</x>
-     <y>159</y>
+     <x>246</x>
+     <y>232</y>
     </hint>
    </hints>
   </connection>
@@ -2471,12 +2470,12 @@ selection-background-color: rgb(0, 170, 0);
    <slot>setCurrentIndex(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>118</x>
-     <y>215</y>
+     <x>110</x>
+     <y>139</y>
     </hint>
     <hint type="destinationlabel">
-     <x>233</x>
-     <y>195</y>
+     <x>110</x>
+     <y>179</y>
     </hint>
    </hints>
   </connection>
@@ -2487,12 +2486,12 @@ selection-background-color: rgb(0, 170, 0);
    <slot>setCurrentIndex(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>175</x>
-     <y>290</y>
+     <x>110</x>
+     <y>139</y>
     </hint>
     <hint type="destinationlabel">
-     <x>223</x>
-     <y>268</y>
+     <x>110</x>
+     <y>179</y>
     </hint>
    </hints>
   </connection>
@@ -2503,12 +2502,12 @@ selection-background-color: rgb(0, 170, 0);
    <slot>setCurrentIndex(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>135</x>
-     <y>378</y>
+     <x>110</x>
+     <y>139</y>
     </hint>
     <hint type="destinationlabel">
-     <x>230</x>
-     <y>346</y>
+     <x>110</x>
+     <y>179</y>
     </hint>
    </hints>
   </connection>
@@ -2519,12 +2518,12 @@ selection-background-color: rgb(0, 170, 0);
    <slot>setCurrentIndex(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>149</x>
-     <y>451</y>
+     <x>110</x>
+     <y>139</y>
     </hint>
     <hint type="destinationlabel">
-     <x>224</x>
-     <y>422</y>
+     <x>110</x>
+     <y>179</y>
     </hint>
    </hints>
   </connection>
@@ -2535,12 +2534,12 @@ selection-background-color: rgb(0, 170, 0);
    <slot>setCurrentIndex(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>168</x>
-     <y>517</y>
+     <x>110</x>
+     <y>139</y>
     </hint>
     <hint type="destinationlabel">
-     <x>218</x>
-     <y>497</y>
+     <x>110</x>
+     <y>179</y>
     </hint>
    </hints>
   </connection>
@@ -2551,7 +2550,7 @@ selection-background-color: rgb(0, 170, 0);
    <slot>setCurrentIndex(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>262</x>
+     <x>237</x>
      <y>117</y>
     </hint>
     <hint type="destinationlabel">
@@ -2615,12 +2614,12 @@ selection-background-color: rgb(0, 170, 0);
    <slot>setNum(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>206</x>
-     <y>148</y>
+     <x>75</x>
+     <y>158</y>
     </hint>
     <hint type="destinationlabel">
-     <x>227</x>
-     <y>165</y>
+     <x>67</x>
+     <y>167</y>
     </hint>
    </hints>
   </connection>
@@ -2631,12 +2630,12 @@ selection-background-color: rgb(0, 170, 0);
    <slot>setCurrentIndex(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>147</x>
-     <y>146</y>
+     <x>110</x>
+     <y>139</y>
     </hint>
     <hint type="destinationlabel">
-     <x>231</x>
-     <y>111</y>
+     <x>110</x>
+     <y>179</y>
     </hint>
    </hints>
   </connection>
@@ -2647,12 +2646,12 @@ selection-background-color: rgb(0, 170, 0);
    <slot>setNum(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>228</x>
-     <y>215</y>
+     <x>75</x>
+     <y>158</y>
     </hint>
     <hint type="destinationlabel">
-     <x>228</x>
-     <y>231</y>
+     <x>67</x>
+     <y>167</y>
     </hint>
    </hints>
   </connection>
@@ -2663,12 +2662,12 @@ selection-background-color: rgb(0, 170, 0);
    <slot>setNum(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>245</x>
-     <y>291</y>
+     <x>75</x>
+     <y>158</y>
     </hint>
     <hint type="destinationlabel">
-     <x>242</x>
-     <y>315</y>
+     <x>67</x>
+     <y>167</y>
     </hint>
    </hints>
   </connection>
@@ -2679,12 +2678,12 @@ selection-background-color: rgb(0, 170, 0);
    <slot>setNum(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>218</x>
-     <y>374</y>
+     <x>75</x>
+     <y>158</y>
     </hint>
     <hint type="destinationlabel">
-     <x>231</x>
-     <y>391</y>
+     <x>67</x>
+     <y>167</y>
     </hint>
    </hints>
   </connection>
@@ -2695,12 +2694,12 @@ selection-background-color: rgb(0, 170, 0);
    <slot>setNum(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>238</x>
-     <y>446</y>
+     <x>75</x>
+     <y>158</y>
     </hint>
     <hint type="destinationlabel">
-     <x>231</x>
-     <y>467</y>
+     <x>67</x>
+     <y>167</y>
     </hint>
    </hints>
   </connection>
@@ -2711,12 +2710,12 @@ selection-background-color: rgb(0, 170, 0);
    <slot>setNum(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>223</x>
-     <y>527</y>
+     <x>75</x>
+     <y>158</y>
     </hint>
     <hint type="destinationlabel">
-     <x>228</x>
-     <y>541</y>
+     <x>67</x>
+     <y>167</y>
     </hint>
    </hints>
   </connection>
@@ -2781,6 +2780,22 @@ selection-background-color: rgb(0, 170, 0);
     <hint type="destinationlabel">
      <x>189</x>
      <y>223</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Bstop_counter</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>Bstart_counter</receiver>
+   <slot>toggle()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>132</x>
+     <y>222</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>143</x>
+     <y>188</y>
     </hint>
    </hints>
   </connection>

@@ -1056,11 +1056,11 @@ class Ui_mainWindow(object):
         self.Digital3.setCurrentIndex(0)
         self.Digital6.setCurrentIndex(0)
         self.Digital1.setCurrentIndex(0)
-        self.sW.setCurrentIndex(0)
+        self.sW.setCurrentIndex(2)
         QtCore.QObject.connect(self.Bstart_capture, QtCore.SIGNAL(_fromUtf8("clicked(bool)")), self.Bstop_capture.setEnabled)
         QtCore.QObject.connect(self.Bstop_capture, QtCore.SIGNAL(_fromUtf8("clicked(bool)")), self.Bstop_capture.setEnabled)
         QtCore.QObject.connect(self.Bstop_capture, QtCore.SIGNAL(_fromUtf8("clicked(bool)")), self.Bstart_capture.toggle)
-        QtCore.QObject.connect(self.Bstart_counter, QtCore.SIGNAL(_fromUtf8("clicked(bool)")), self.Bstop_counter.setEnabled)
+        QtCore.QObject.connect(self.Bstart_counter, QtCore.SIGNAL(_fromUtf8("toggled(bool)")), self.Bstop_counter.setEnabled)
         QtCore.QObject.connect(self.Bset_pwm, QtCore.SIGNAL(_fromUtf8("clicked(bool)")), self.Bstop_pwm.setEnabled)
         QtCore.QObject.connect(self.Bstop_pwm, QtCore.SIGNAL(_fromUtf8("clicked(bool)")), self.Bset_pwm.setChecked)
         QtCore.QObject.connect(self.Bstop_pwm, QtCore.SIGNAL(_fromUtf8("clicked(bool)")), self.Bstop_pwm.setEnabled)
@@ -1091,6 +1091,7 @@ class Ui_mainWindow(object):
         QtCore.QObject.connect(self.Bplay, QtCore.SIGNAL(_fromUtf8("toggled(bool)")), self.neg_channel.setDisabled)
         QtCore.QObject.connect(self.Bplay, QtCore.SIGNAL(_fromUtf8("toggled(bool)")), self.range.setDisabled)
         QtCore.QObject.connect(self.Bplay, QtCore.SIGNAL(_fromUtf8("toggled(bool)")), self.sb_period.setDisabled)
+        QtCore.QObject.connect(self.Bstop_counter, QtCore.SIGNAL(_fromUtf8("clicked(bool)")), self.Bstart_counter.toggle)
         QtCore.QMetaObject.connectSlotsByName(mainWindow)
 
     def retranslateUi(self, mainWindow):
