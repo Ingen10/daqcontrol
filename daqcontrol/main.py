@@ -5,6 +5,8 @@ from __future__ import print_function
 
 import sys
 import glob
+import numpy as np
+from threading import Timer
 
 import serial
 from PyQt4 import QtCore, QtGui, uic
@@ -40,14 +42,23 @@ def list_serial_ports():
             pass
     return result
 
+def displace(vector):
+    for i in range(len(vector)-1):
+        vector[i] = vector[i+1]
+    return vector
+
 
 class MyApp(QtGui.QMainWindow, daq_control.Ui_mainWindow):
     def __init__(self, parent=None):
         QtGui.QMainWindow.__init__(self, parent)
         self.setupUi(self)
-        self.Y = []
-        self.X = []
+
+        self.tam_values = 200
+        self.coef = 0
+        self.time = 0
+
         self.names = ['AGND', 'A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'VREF']
+
         self.cfg = QtCore.QSettings('opendaq')
         port_opendaq = str(self.cfg.value('port').toString())
         try:
@@ -84,32 +95,45 @@ class MyApp(QtGui.QMainWindow, daq_control.Ui_mainWindow):
         self.plotWidget.canvas.ax.grid(True)
         self.plotWidget.canvas.xtitle = "Time (s)"
         self.plotWidget.canvas.ytitle = "Voltage (V)"
-        self.X = []
-        self.Y = []
+        self.X = np.zeros(self.tam_values)
+        self.Y = np.zeros(self.tam_values)
+        self.coef = 0
+        self.time = 0
+        self.configure()
         self.update()
 
-    def update(self):
+    def configure(self):
         ninput = self.names.index(self.neg_channel.currentText())
         if ninput > 8:
             ninput = 25
         pinput = self.names.index(self.pos_channel.currentText())
         if pinput > 8:
             pinput = 25
-        period = self.sb_period.value()
-        self.daq.conf_adc(pinput, ninput, self.range.currentIndex())
-        self.daq.read_adc()
-        value = self.daq.read_analog()
-        self.Y.append(value)
-        self.X.append(period * len(self.X))
-        self.last_value.setText(str(value))
-        self.plotWidget.canvas.ax.plot(self.X, self.Y, color='#4d94ff', linewidth=0.7)
-        self.plotWidget.canvas.draw()
+        self.period = self.sb_period.value()
+        self.daq.conf_adc(pinput, ninput, gain=self.range.currentIndex())
 
+    def update(self):
         if self.Bplay.isChecked():
+            self.plot()
             timer = QtCore.QTimer()
             timer.timeout.connect(self.update)
-            timer.start(period)
-            QtCore.QTimer.singleShot(period * 1000, self.update)
+            timer.start(self.period)
+            QtCore.QTimer.singleShot(self.period*1000, self.update)
+
+    def plot(self):
+        value = self.daq.read_analog()
+        if self.coef >= self.tam_values:
+            self.coef = self.tam_values - 1
+            displace(self.X)
+            displace(self.Y)
+        self.Y[self.coef] = value
+        self.X[self.coef] = self.time
+        self.time = self.time + self.period
+        self.coef = self.coef + 1
+        self.last_value.setText(str(value))
+        if self.coef:
+            self.plotWidget.canvas.ax.plot(self.X[:self.coef], self.Y[:self.coef], color='#4d94ff', linewidth=0.7)
+            self.plotWidget.canvas.draw()
 
     def GetcbValues(self):
         model = DAQModel.new(*self.daq.get_info())
@@ -158,9 +182,9 @@ class MyApp(QtGui.QMainWindow, daq_control.Ui_mainWindow):
         self.daq.stop_pwm()
 
     def set_pwm(self):
-        self.period = self.periodPWM.value()
+        self.period_PWM = self.periodPWM.value()
         self.duty = self.dutyPWM.value() * 1023 / 100
-        self.daq.init_pwm(self.duty, self.period)
+        self.daq.init_pwm(self.duty, self.period_PWM)
 
     def reset_pwm(self):
         self.stop_pwm()
