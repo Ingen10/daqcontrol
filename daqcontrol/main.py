@@ -16,8 +16,8 @@ import matplotlib
 from opendaq import DAQ
 from opendaq.models import DAQModel
 
-import daq_control
-import config
+from . import daq_control
+from . import config
 
 
 def list_serial_ports():
@@ -60,7 +60,10 @@ class MyApp(QtGui.QMainWindow, daq_control.Ui_mainWindow):
         self.names = ['AGND', 'A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'VREF']
 
         self.cfg = QtCore.QSettings('opendaq')
-        port_opendaq = str(self.cfg.value('port').toString())
+        if sys.version[0] == '2':
+            port_opendaq = str(self.cfg.value('port').toString())
+        else:
+            port_opendaq = str(self.cfg.value('port'))
         try:
             self.daq = DAQ(port_opendaq)
         except:
@@ -193,7 +196,7 @@ class MyApp(QtGui.QMainWindow, daq_control.Ui_mainWindow):
     def status_resolution(self):
         self.resolution_encoder.setEnabled(False if self.mode_encoder.currentIndex() else True)
 
-    def start_encoder(self):     
+    def start_encoder(self):
         self.daq.init_encoder(self.resolution_encoder.value())
 
     def stop_encoder(self):

@@ -8,19 +8,25 @@
 
 from PyQt4 import QtCore, QtGui
 
+from .widgets import MPL_Widget
+
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
 except AttributeError:
+
     def _fromUtf8(s):
         return s
 
 try:
     _encoding = QtGui.QApplication.UnicodeUTF8
+
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig, _encoding)
 except AttributeError:
+
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
+
 
 class Ui_mainWindow(object):
     def setupUi(self, mainWindow):
@@ -1169,8 +1175,6 @@ class Ui_mainWindow(object):
         self.toolBar.setWindowTitle(_translate("mainWindow", "toolBar", None))
         self.actionConfig.setText(_translate("mainWindow", "config", None))
 
-from widgets import MPL_Widget
-
 if __name__ == "__main__":
     import sys
     app = QtGui.QApplication(sys.argv)
@@ -1179,4 +1183,3 @@ if __name__ == "__main__":
     ui.setupUi(mainWindow)
     mainWindow.show()
     sys.exit(app.exec_())
-
