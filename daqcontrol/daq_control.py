@@ -1065,7 +1065,7 @@ class Ui_mainWindow(object):
         self.Digital3.setCurrentIndex(0)
         self.Digital6.setCurrentIndex(0)
         self.Digital1.setCurrentIndex(0)
-        self.sW.setCurrentIndex(2)
+        self.sW.setCurrentIndex(0)
         QtCore.QObject.connect(self.Bstart_capture, QtCore.SIGNAL(_fromUtf8("clicked(bool)")), self.Bstop_capture.setEnabled)
         QtCore.QObject.connect(self.Bstop_capture, QtCore.SIGNAL(_fromUtf8("clicked(bool)")), self.Bstop_capture.setEnabled)
         QtCore.QObject.connect(self.Bstop_capture, QtCore.SIGNAL(_fromUtf8("clicked(bool)")), self.Bstart_capture.toggle)
@@ -1178,8 +1178,8 @@ class Ui_mainWindow(object):
         self.actionConfig.setText(_translate("mainWindow", "config", None))
         self.actionCSV.setText(_translate("mainWindow", "CSV", None))
 
-from .widgets import MPL_Widget
-from . import resources_rc
+from widgets import MPL_Widget
+import res_rc
 
 if __name__ == "__main__":
     import sys
