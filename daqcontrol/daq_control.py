@@ -8,6 +8,9 @@
 
 from PyQt4 import QtCore, QtGui
 
+from .widgets import MPL_Widget
+from . import resources_rc
+
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
 except AttributeError:
@@ -1177,9 +1180,6 @@ class Ui_mainWindow(object):
         self.toolBar.setWindowTitle(_translate("mainWindow", "toolBar", None))
         self.actionConfig.setText(_translate("mainWindow", "config", None))
         self.actionCSV.setText(_translate("mainWindow", "CSV", None))
-
-from widgets import MPL_Widget
-import res_rc
 
 if __name__ == "__main__":
     import sys
