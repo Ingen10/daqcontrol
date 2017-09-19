@@ -7,17 +7,20 @@ import sys
 import glob
 import numpy as np
 from threading import Timer
+import csv
 
 import serial
 from PyQt4 import QtCore, QtGui, uic
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 import matplotlib
+from matplotlib.backends.backend_qt4 import NavigationToolbar2QT
 from opendaq import DAQ
 from opendaq.models import DAQModel
 
 from . import daq_control
 from . import config
+from .widgets import NavigationToolbar
 
 
 def list_serial_ports():
@@ -31,7 +34,6 @@ def list_serial_ports():
         ports = glob.glob('/dev/tty.*')
     else:
         raise EnvironmentError('Unsupported platform')
-
     result = []
     for port in ports:
         try:
@@ -52,13 +54,10 @@ class MyApp(QtGui.QMainWindow, daq_control.Ui_mainWindow):
     def __init__(self, parent=None):
         QtGui.QMainWindow.__init__(self, parent)
         self.setupUi(self)
-
-        self.tam_values = 200
+        self.tam_values = 500
         self.coef = 0
         self.time = 0
-
         self.names = ['AGND', 'A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'VREF']
-
         self.cfg = QtCore.QSettings('opendaq')
         if sys.version[0] == '2':
             port_opendaq = str(self.cfg.value('port').toString())
@@ -71,7 +70,13 @@ class MyApp(QtGui.QMainWindow, daq_control.Ui_mainWindow):
         self.tabWidget.setEnabled(False if port_opendaq == '' else True)
         if port_opendaq:
             self.GetcbValues()
-        self.toolBar.actionTriggered.connect(self.GetPort)
+        #  Toolbar
+        nav = NavigationToolbar(self.plotWidget.canvas, self.plotWidget.canvas)
+        nav.setVisible(False)
+        for action in nav.actions():
+            self.toolBar.addAction(action)
+        self.actionConfig.triggered.connect(self.GetPort)
+        self.actionCSV.triggered.connect(self.export_csv)
         self.Bstart_capture.clicked.connect(self.start_capture)
         self.Bstop_capture.clicked.connect(self.stop_capture)
         self.Bstart_counter.clicked.connect(self.start_counter)
@@ -92,6 +97,15 @@ class MyApp(QtGui.QMainWindow, daq_control.Ui_mainWindow):
 
     def set_DAC(self):
         self.daq.set_analog(self.dac_value.value())
+
+    def export_csv(self):
+        fname = QtGui.QFileDialog.getSaveFileName(self, 'Export as CSV')
+        fieldnames = ['Time (ms)', 'Voltage (V)']
+        with open(fname + '.csv', 'w') as csvfile:
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+            writer.writeheader()
+            for j in range(self.coef):
+                writer.writerow({'Time (ms)': self.X[j], 'Voltage (V)': self.Y[j]})
 
     def play(self):
         self.plotWidget.canvas.ax.cla()
@@ -212,7 +226,6 @@ class MyApp(QtGui.QMainWindow, daq_control.Ui_mainWindow):
             self.daq.set_pio_dir((i+1), ports_mode[i].currentIndex())
             if ports_mode[i].currentIndex():
                 self.daq.set_pio((i+1), slider_out[i].value())
-
             else:
                 value = 1 if self.daq.read_pio(i+1) else 0
                 palette = display_out[i].palette()

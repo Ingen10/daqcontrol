@@ -8,25 +8,19 @@
 
 from PyQt4 import QtCore, QtGui
 
-from .widgets import MPL_Widget
-
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
 except AttributeError:
-
     def _fromUtf8(s):
         return s
 
 try:
     _encoding = QtGui.QApplication.UnicodeUTF8
-
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig, _encoding)
 except AttributeError:
-
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
-
 
 class Ui_mainWindow(object):
     def setupUi(self, mainWindow):
@@ -127,6 +121,20 @@ class Ui_mainWindow(object):
         self.label_16.setMinimumSize(QtCore.QSize(80, 27))
         self.label_16.setObjectName(_fromUtf8("label_16"))
         self.formLayout_5.setWidget(4, QtGui.QFormLayout.LabelRole, self.label_16)
+        self.sb_period = QtGui.QDoubleSpinBox(self.tab1)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.sb_period.sizePolicy().hasHeightForWidth())
+        self.sb_period.setSizePolicy(sizePolicy)
+        self.sb_period.setMinimumSize(QtCore.QSize(100, 27))
+        self.sb_period.setDecimals(3)
+        self.sb_period.setMinimum(0.001)
+        self.sb_period.setMaximum(99.999)
+        self.sb_period.setSingleStep(0.01)
+        self.sb_period.setProperty("value", 1.0)
+        self.sb_period.setObjectName(_fromUtf8("sb_period"))
+        self.formLayout_5.setWidget(4, QtGui.QFormLayout.FieldRole, self.sb_period)
         self.Bplay = QtGui.QPushButton(self.tab1)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -147,6 +155,15 @@ class Ui_mainWindow(object):
         self.Bstop.setMinimumSize(QtCore.QSize(100, 27))
         self.Bstop.setObjectName(_fromUtf8("Bstop"))
         self.formLayout_5.setWidget(6, QtGui.QFormLayout.FieldRole, self.Bstop)
+        self.label_18 = QtGui.QLabel(self.tab1)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_18.sizePolicy().hasHeightForWidth())
+        self.label_18.setSizePolicy(sizePolicy)
+        self.label_18.setMinimumSize(QtCore.QSize(80, 27))
+        self.label_18.setObjectName(_fromUtf8("label_18"))
+        self.formLayout_5.setWidget(7, QtGui.QFormLayout.LabelRole, self.label_18)
         self.last_value = QtGui.QLabel(self.tab1)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -157,15 +174,6 @@ class Ui_mainWindow(object):
         self.last_value.setAlignment(QtCore.Qt.AlignCenter)
         self.last_value.setObjectName(_fromUtf8("last_value"))
         self.formLayout_5.setWidget(7, QtGui.QFormLayout.FieldRole, self.last_value)
-        self.label_18 = QtGui.QLabel(self.tab1)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.label_18.sizePolicy().hasHeightForWidth())
-        self.label_18.setSizePolicy(sizePolicy)
-        self.label_18.setMinimumSize(QtCore.QSize(80, 27))
-        self.label_18.setObjectName(_fromUtf8("label_18"))
-        self.formLayout_5.setWidget(7, QtGui.QFormLayout.LabelRole, self.label_18)
         self.label_19 = QtGui.QLabel(self.tab1)
         font = QtGui.QFont()
         font.setBold(True)
@@ -187,20 +195,6 @@ class Ui_mainWindow(object):
         self.dac_value.setSingleStep(0.1)
         self.dac_value.setObjectName(_fromUtf8("dac_value"))
         self.formLayout_5.setWidget(9, QtGui.QFormLayout.FieldRole, self.dac_value)
-        self.sb_period = QtGui.QDoubleSpinBox(self.tab1)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.sb_period.sizePolicy().hasHeightForWidth())
-        self.sb_period.setSizePolicy(sizePolicy)
-        self.sb_period.setMinimumSize(QtCore.QSize(100, 27))
-        self.sb_period.setDecimals(3)
-        self.sb_period.setMinimum(0.001)
-        self.sb_period.setMaximum(99.999)
-        self.sb_period.setSingleStep(0.01)
-        self.sb_period.setProperty("value", 1.0)
-        self.sb_period.setObjectName(_fromUtf8("sb_period"))
-        self.formLayout_5.setWidget(4, QtGui.QFormLayout.FieldRole, self.sb_period)
         self.Bset_voltage = QtGui.QPushButton(self.tab1)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -1049,11 +1043,19 @@ class Ui_mainWindow(object):
         self.toolBar.setObjectName(_fromUtf8("toolBar"))
         mainWindow.addToolBar(QtCore.Qt.TopToolBarArea, self.toolBar)
         self.actionConfig = QtGui.QAction(mainWindow)
-        icon = QtGui.QIcon.fromTheme(_fromUtf8("document-properties"))
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(_fromUtf8(":/resources/config.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actionConfig.setIcon(icon)
         self.actionConfig.setIconVisibleInMenu(True)
         self.actionConfig.setObjectName(_fromUtf8("actionConfig"))
+        self.actionCSV = QtGui.QAction(mainWindow)
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap(_fromUtf8(":/resources/CSV.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.actionCSV.setIcon(icon1)
+        self.actionCSV.setObjectName(_fromUtf8("actionCSV"))
         self.toolBar.addAction(self.actionConfig)
+        self.toolBar.addAction(self.actionCSV)
+        self.toolBar.addSeparator()
 
         self.retranslateUi(mainWindow)
         self.tabWidget.setCurrentIndex(0)
@@ -1110,8 +1112,8 @@ class Ui_mainWindow(object):
         self.label_16.setText(_translate("mainWindow", "Period (s)", None))
         self.Bplay.setText(_translate("mainWindow", "Play", None))
         self.Bstop.setText(_translate("mainWindow", "Stop", None))
-        self.last_value.setText(_translate("mainWindow", "-", None))
         self.label_18.setText(_translate("mainWindow", "Last Value (V)", None))
+        self.last_value.setText(_translate("mainWindow", "-", None))
         self.label_19.setText(_translate("mainWindow", "Analog Output", None))
         self.label_20.setText(_translate("mainWindow", "DAC Value (V)", None))
         self.Bset_voltage.setText(_translate("mainWindow", "Set Voltage", None))
@@ -1174,6 +1176,10 @@ class Ui_mainWindow(object):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("mainWindow", "Timer-Counter", None))
         self.toolBar.setWindowTitle(_translate("mainWindow", "toolBar", None))
         self.actionConfig.setText(_translate("mainWindow", "config", None))
+        self.actionCSV.setText(_translate("mainWindow", "CSV", None))
+
+from .widgets import MPL_Widget
+from . import resources_rc
 
 if __name__ == "__main__":
     import sys
@@ -1183,3 +1189,4 @@ if __name__ == "__main__":
     ui.setupUi(mainWindow)
     mainWindow.show()
     sys.exit(app.exec_())
+
