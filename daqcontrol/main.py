@@ -5,22 +5,21 @@ from __future__ import print_function
 
 import sys
 import glob
-import numpy as np
-from threading import Timer
 import csv
+import numpy as np
+from serial import SerialException
 
 import serial
-from PyQt4 import QtCore, QtGui, uic
-from PyQt4.QtCore import *
-from PyQt4.QtGui import *
-import matplotlib
-from matplotlib.backends.backend_qt4 import NavigationToolbar2QT
+from PyQt4 import QtCore, QtGui
+from PyQt4.QtGui import QPalette
 from opendaq import DAQ
 from opendaq.models import DAQModel
 
 from . import daq_control
 from . import config
 from .widgets import NavigationToolbar
+
+BUFFER_SIZE = 400
 
 
 def list_serial_ports():
@@ -44,19 +43,11 @@ def list_serial_ports():
             pass
     return result
 
-def displace(vector):
-    for i in range(len(vector)-1):
-        vector[i] = vector[i+1]
-    return vector
-
 
 class MyApp(QtGui.QMainWindow, daq_control.Ui_mainWindow):
     def __init__(self, parent=None):
         QtGui.QMainWindow.__init__(self, parent)
         self.setupUi(self)
-        self.tam_values = 500
-        self.coef = 0
-        self.time = 0
         self.names = ['AGND', 'A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'VREF']
         self.cfg = QtCore.QSettings('opendaq')
         if sys.version[0] == '2':
@@ -65,17 +56,21 @@ class MyApp(QtGui.QMainWindow, daq_control.Ui_mainWindow):
             port_opendaq = str(self.cfg.value('port'))
         try:
             self.daq = DAQ(port_opendaq)
-        except:
+        except SerialException:
             port_opendaq = ''
-        self.tabWidget.setEnabled(False if port_opendaq == '' else True)
+        self.tabWidget.setEnabled(bool(port_opendaq))
         if port_opendaq:
-            self.GetcbValues()
+            self.get_cb_values()
         #  Toolbar
         nav = NavigationToolbar(self.plotWidget.canvas, self.plotWidget.canvas)
         nav.setVisible(False)
+        try:
+            self.statusBar.showMessage("Hardware Version: %s   Firmware Version: %s" % (self.daq.hw_ver[1], self.daq.fw_ver))
+        except AttributeError:
+            pass
         for action in nav.actions():
             self.toolBar.addAction(action)
-        self.actionConfig.triggered.connect(self.GetPort)
+        self.actionConfig.triggered.connect(self.get_port)
         self.actionCSV.triggered.connect(self.export_csv)
         self.Bstart_capture.clicked.connect(self.start_capture)
         self.Bstop_capture.clicked.connect(self.stop_capture)
@@ -86,16 +81,12 @@ class MyApp(QtGui.QMainWindow, daq_control.Ui_mainWindow):
         self.Bset_pwm.clicked.connect(self.set_pwm)
         self.Bstart_encoder.clicked.connect(self.start_encoder)
         self.Bstop_encoder.clicked.connect(self.stop_encoder)
-        self.Bupdate.clicked.connect(self.Digital_ports)
-        self.Bset_voltage.clicked.connect(self.set_DAC)
+        self.Bupdate.clicked.connect(self.digital_ports)
+        self.Bset_voltage.clicked.connect(self.set_dac)
         self.Bplay.clicked.connect(self.play)
         self.mode_encoder.currentIndexChanged.connect(self.status_resolution)
-        try:
-            self.statusBar.showMessage("Hardware Version: %s   Firmware Version: %s" % (self.daq.hw_ver[1], self.daq.fw_ver))
-        except:
-            pass
 
-    def set_DAC(self):
+    def set_dac(self):
         self.daq.set_analog(self.dac_value.value())
 
     def export_csv(self):
@@ -104,18 +95,17 @@ class MyApp(QtGui.QMainWindow, daq_control.Ui_mainWindow):
         with open(fname + '.csv', 'w') as csvfile:
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             writer.writeheader()
-            for j in range(self.coef):
+            j = 0
+            while not(np.isnan(self.Y[j])):
                 writer.writerow({'Time (ms)': self.X[j], 'Voltage (V)': self.Y[j]})
+                j = j + 1
 
     def play(self):
         self.plotWidget.canvas.ax.cla()
         self.plotWidget.canvas.ax.grid(True)
-        self.plotWidget.canvas.xtitle = "Time (s)"
-        self.plotWidget.canvas.ytitle = "Voltage (V)"
-        self.X = np.zeros(self.tam_values)
-        self.Y = np.zeros(self.tam_values)
-        self.coef = 0
-        self.time = 0
+        self.Y, self.X = [np.zeros(BUFFER_SIZE)] * 2
+        self.Y[:] = np.nan
+        self.X[:] = np.nan
         self.configure()
         self.update()
 
@@ -138,21 +128,18 @@ class MyApp(QtGui.QMainWindow, daq_control.Ui_mainWindow):
             QtCore.QTimer.singleShot(self.period*1000, self.update)
 
     def plot(self):
-        value = self.daq.read_analog()
-        if self.coef >= self.tam_values:
-            self.coef = self.tam_values - 1
-            displace(self.X)
-            displace(self.Y)
-        self.Y[self.coef] = value
-        self.X[self.coef] = self.time
-        self.time = self.time + self.period
-        self.coef = self.coef + 1
-        self.last_value.setText(str(value))
-        if self.coef:
-            self.plotWidget.canvas.ax.plot(self.X[:self.coef], self.Y[:self.coef], color='#4d94ff', linewidth=0.7)
-            self.plotWidget.canvas.draw()
+        self.Y = np.roll(self.Y, 1)
+        self.Y[0] = self.daq.read_analog()
+        self.X = np.roll(self.X, 1)
+        if np.isnan(self.X[1]):
+            self.X[0] = 0
+        else:
+            self.X[0] = self.X[1] + self.period
+        self.last_value.setText(str(self.daq.read_analog()))
+        self.plotWidget.canvas.ax.plot(self.X, self.Y, color='#4d94ff', linewidth=0.7)
+        self.plotWidget.canvas.draw()
 
-    def GetcbValues(self):
+    def get_cb_values(self):
         model = DAQModel.new(*self.daq.get_info())
         for ninput in model.adc.ninputs:
             if ninput < 9:
@@ -169,15 +156,15 @@ class MyApp(QtGui.QMainWindow, daq_control.Ui_mainWindow):
         self.dac_value.setMinimum(model.dac.vmin)
         self.dac_value.setMaximum(model.dac.vmax)
 
-    def GetPort(self):
+    def get_port(self):
         dlg = Configuration(self)
         if dlg.exec_() != '':
-            port_opendaq = dlg.ReturnPort()
+            port_opendaq = dlg.return_port()
         self.cfg.setValue('port', port_opendaq)
         self.daq = DAQ(str(port_opendaq))
         self.tabWidget.setEnabled(False if port_opendaq == '' else True)
         self.statusBar.showMessage("Hardware Version: %s   Firmware Version: %s" % (self.daq.hw_ver[1], self.daq.fw_ver))
-        self.GetcbValues()
+        self.get_cb_values()
 
     def start_counter(self):
         self.daq.init_counter(0)
@@ -217,7 +204,7 @@ class MyApp(QtGui.QMainWindow, daq_control.Ui_mainWindow):
         self.daq.stop_encoder()
         self.result_encoder.setText(str(self.daq.get_encoder()))
 
-    def Digital_ports(self):
+    def digital_ports(self):
         ports_mode = [self.cbD1, self.cbD2, self.cbD3, self.cbD4, self.cbD5, self.cbD6]
         slider_out = [self.SDO1, self.SDO2, self.SDO3, self.SDO4, self.SDO5, self.SDO6]
         display_out = [self.DDI1, self.DDI2, self.DDI3, self.DDI4, self.DDI5, self.DDI6]
@@ -240,9 +227,9 @@ class Configuration(QtGui.QDialog, config.Ui_MainWindow):
         self.setupUi(self)
         for portO in list_serial_ports():
             self.cbport.addItem(portO)
-        self.connectButton.clicked.connect(self.ReturnPort)
+        self.connectButton.clicked.connect(self.return_port)
 
-    def ReturnPort(self):
+    def return_port(self):
         port = self.cbport.currentText()
         self.close()
         return port
