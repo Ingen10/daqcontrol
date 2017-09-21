@@ -162,7 +162,7 @@ class MyApp(QtGui.QMainWindow, daq_control.Ui_mainWindow):
             port_opendaq = dlg.return_port()
         self.cfg.setValue('port', port_opendaq)
         self.daq = DAQ(str(port_opendaq))
-        self.tabWidget.setEnabled(False if port_opendaq == '' else True)
+        self.tabWidget.setEnabled(bool(port_opendaq))
         self.statusBar.showMessage("Hardware Version: %s   Firmware Version: %s" % (self.daq.hw_ver[1], self.daq.fw_ver))
         self.get_cb_values()
 
@@ -187,7 +187,7 @@ class MyApp(QtGui.QMainWindow, daq_control.Ui_mainWindow):
 
     def set_pwm(self):
         self.period_PWM = self.periodPWM.value()
-        self.duty = self.dutyPWM.value() * 1023 / 100
+        self.duty = int(self.dutyPWM.value() * 1023 / 100)
         self.daq.init_pwm(self.duty, self.period_PWM)
 
     def reset_pwm(self):
