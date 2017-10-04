@@ -75,7 +75,6 @@ class MyApp(QtGui.QMainWindow, daq_control.Ui_mainWindow):
             if action.text() != 'Subplots': 
                 self.toolBar.addAction(action)
         for i, action in enumerate(self.toolBar.actions()[3:8]):
-            print(action.text())
             action.setIcon(QIcon(icons[i]))
         self.actionConfig.triggered.connect(self.get_port)
         self.actionCSV.triggered.connect(self.export_csv)
