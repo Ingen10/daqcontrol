@@ -11,10 +11,11 @@ from serial import SerialException
 
 import serial
 from PyQt4 import QtCore, QtGui
-from PyQt4.QtGui import QPalette
+from PyQt4.QtGui import QPalette, QIcon
 from opendaq import DAQ
 from opendaq.models import DAQModel
 
+from . import resources_rc
 from . import daq_control
 from . import config
 from .widgets import NavigationToolbar
@@ -68,8 +69,14 @@ class MyApp(QtGui.QMainWindow, daq_control.Ui_mainWindow):
             self.statusBar.showMessage("Hardware Version: %s   Firmware Version: %s" % (self.daq.hw_ver[1], self.daq.fw_ver))
         except AttributeError:
             pass
+        icons = [":/resources/house.png", ":/resources/pan.png", ":/resources/zoom.png",
+                 ":/resources/customize.png", ":/resources/save.png"]
         for action in nav.actions():
-            self.toolBar.addAction(action)
+            if action.text() != 'Subplots': 
+                self.toolBar.addAction(action)
+        for i, action in enumerate(self.toolBar.actions()[3:8]):
+            print(action.text())
+            action.setIcon(QIcon(icons[i]))
         self.actionConfig.triggered.connect(self.get_port)
         self.actionCSV.triggered.connect(self.export_csv)
         self.Bstart_capture.clicked.connect(self.start_capture)
@@ -128,6 +135,7 @@ class MyApp(QtGui.QMainWindow, daq_control.Ui_mainWindow):
             QtCore.QTimer.singleShot(self.period*1000, self.update)
 
     def plot(self):
+        self.plotWidget.canvas.ax.hold(not(self.cBosc.isChecked()))
         self.Y = np.roll(self.Y, 1)
         self.Y[0] = self.daq.read_analog()
         self.X = np.roll(self.X, 1)
@@ -137,6 +145,7 @@ class MyApp(QtGui.QMainWindow, daq_control.Ui_mainWindow):
             self.X[0] = self.X[1] + self.period
         self.last_value.setText(str(self.daq.read_analog()))
         self.plotWidget.canvas.ax.plot(self.X, self.Y, color='#4d94ff', linewidth=0.7)
+        self.plotWidget.canvas.ax.grid(True)
         self.plotWidget.canvas.draw()
 
     def get_cb_values(self):

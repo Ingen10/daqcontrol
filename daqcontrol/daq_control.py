@@ -8,8 +8,8 @@
 
 from PyQt4 import QtCore, QtGui
 
-from .widgets import MPL_Widget
-from . import resources_rc
+from widgets import MPL_Widget
+import resources_rc
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -19,18 +19,16 @@ except AttributeError:
 
 try:
     _encoding = QtGui.QApplication.UnicodeUTF8
-
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig, _encoding)
 except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
 
-
 class Ui_mainWindow(object):
     def setupUi(self, mainWindow):
         mainWindow.setObjectName(_fromUtf8("mainWindow"))
-        mainWindow.resize(800, 670)
+        mainWindow.resize(834, 696)
         mainWindow.setMinimumSize(QtCore.QSize(800, 670))
         self.centralwidget = QtGui.QWidget(mainWindow)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
@@ -44,10 +42,8 @@ class Ui_mainWindow(object):
         self.tab1.setObjectName(_fromUtf8("tab1"))
         self.horizontalLayout_6 = QtGui.QHBoxLayout(self.tab1)
         self.horizontalLayout_6.setObjectName(_fromUtf8("horizontalLayout_6"))
-        self.horizontalLayout = QtGui.QHBoxLayout()
-        self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
         self.formLayout_5 = QtGui.QFormLayout()
-        self.formLayout_5.setSizeConstraint(QtGui.QLayout.SetFixedSize)
+        self.formLayout_5.setSizeConstraint(QtGui.QLayout.SetMinimumSize)
         self.formLayout_5.setFieldGrowthPolicy(QtGui.QFormLayout.AllNonFixedFieldsGrow)
         self.formLayout_5.setObjectName(_fromUtf8("formLayout_5"))
         self.label_12 = QtGui.QLabel(self.tab1)
@@ -57,6 +53,7 @@ class Ui_mainWindow(object):
         sizePolicy.setHeightForWidth(self.label_12.sizePolicy().hasHeightForWidth())
         self.label_12.setSizePolicy(sizePolicy)
         self.label_12.setMinimumSize(QtCore.QSize(80, 27))
+        self.label_12.setMaximumSize(QtCore.QSize(110, 27))
         font = QtGui.QFont()
         font.setBold(True)
         font.setWeight(75)
@@ -70,6 +67,7 @@ class Ui_mainWindow(object):
         sizePolicy.setHeightForWidth(self.label_13.sizePolicy().hasHeightForWidth())
         self.label_13.setSizePolicy(sizePolicy)
         self.label_13.setMinimumSize(QtCore.QSize(80, 27))
+        self.label_13.setMaximumSize(QtCore.QSize(80, 27))
         self.label_13.setObjectName(_fromUtf8("label_13"))
         self.formLayout_5.setWidget(1, QtGui.QFormLayout.LabelRole, self.label_13)
         self.pos_channel = QtGui.QComboBox(self.tab1)
@@ -79,6 +77,7 @@ class Ui_mainWindow(object):
         sizePolicy.setHeightForWidth(self.pos_channel.sizePolicy().hasHeightForWidth())
         self.pos_channel.setSizePolicy(sizePolicy)
         self.pos_channel.setMinimumSize(QtCore.QSize(100, 27))
+        self.pos_channel.setMaximumSize(QtCore.QSize(100, 27))
         self.pos_channel.setObjectName(_fromUtf8("pos_channel"))
         self.formLayout_5.setWidget(1, QtGui.QFormLayout.FieldRole, self.pos_channel)
         self.label_14 = QtGui.QLabel(self.tab1)
@@ -88,6 +87,7 @@ class Ui_mainWindow(object):
         sizePolicy.setHeightForWidth(self.label_14.sizePolicy().hasHeightForWidth())
         self.label_14.setSizePolicy(sizePolicy)
         self.label_14.setMinimumSize(QtCore.QSize(80, 27))
+        self.label_14.setMaximumSize(QtCore.QSize(80, 27))
         self.label_14.setObjectName(_fromUtf8("label_14"))
         self.formLayout_5.setWidget(2, QtGui.QFormLayout.LabelRole, self.label_14)
         self.neg_channel = QtGui.QComboBox(self.tab1)
@@ -97,6 +97,7 @@ class Ui_mainWindow(object):
         sizePolicy.setHeightForWidth(self.neg_channel.sizePolicy().hasHeightForWidth())
         self.neg_channel.setSizePolicy(sizePolicy)
         self.neg_channel.setMinimumSize(QtCore.QSize(100, 27))
+        self.neg_channel.setMaximumSize(QtCore.QSize(100, 27))
         self.neg_channel.setObjectName(_fromUtf8("neg_channel"))
         self.formLayout_5.setWidget(2, QtGui.QFormLayout.FieldRole, self.neg_channel)
         self.label_15 = QtGui.QLabel(self.tab1)
@@ -106,6 +107,7 @@ class Ui_mainWindow(object):
         sizePolicy.setHeightForWidth(self.label_15.sizePolicy().hasHeightForWidth())
         self.label_15.setSizePolicy(sizePolicy)
         self.label_15.setMinimumSize(QtCore.QSize(80, 27))
+        self.label_15.setMaximumSize(QtCore.QSize(80, 27))
         self.label_15.setObjectName(_fromUtf8("label_15"))
         self.formLayout_5.setWidget(3, QtGui.QFormLayout.LabelRole, self.label_15)
         self.range = QtGui.QComboBox(self.tab1)
@@ -115,6 +117,7 @@ class Ui_mainWindow(object):
         sizePolicy.setHeightForWidth(self.range.sizePolicy().hasHeightForWidth())
         self.range.setSizePolicy(sizePolicy)
         self.range.setMinimumSize(QtCore.QSize(100, 27))
+        self.range.setMaximumSize(QtCore.QSize(100, 27))
         self.range.setObjectName(_fromUtf8("range"))
         self.formLayout_5.setWidget(3, QtGui.QFormLayout.FieldRole, self.range)
         self.label_16 = QtGui.QLabel(self.tab1)
@@ -124,6 +127,7 @@ class Ui_mainWindow(object):
         sizePolicy.setHeightForWidth(self.label_16.sizePolicy().hasHeightForWidth())
         self.label_16.setSizePolicy(sizePolicy)
         self.label_16.setMinimumSize(QtCore.QSize(80, 27))
+        self.label_16.setMaximumSize(QtCore.QSize(80, 27))
         self.label_16.setObjectName(_fromUtf8("label_16"))
         self.formLayout_5.setWidget(4, QtGui.QFormLayout.LabelRole, self.label_16)
         self.sb_period = QtGui.QDoubleSpinBox(self.tab1)
@@ -133,6 +137,7 @@ class Ui_mainWindow(object):
         sizePolicy.setHeightForWidth(self.sb_period.sizePolicy().hasHeightForWidth())
         self.sb_period.setSizePolicy(sizePolicy)
         self.sb_period.setMinimumSize(QtCore.QSize(100, 27))
+        self.sb_period.setMaximumSize(QtCore.QSize(100, 27))
         self.sb_period.setDecimals(3)
         self.sb_period.setMinimum(0.001)
         self.sb_period.setMaximum(99.999)
@@ -147,6 +152,7 @@ class Ui_mainWindow(object):
         sizePolicy.setHeightForWidth(self.Bplay.sizePolicy().hasHeightForWidth())
         self.Bplay.setSizePolicy(sizePolicy)
         self.Bplay.setMinimumSize(QtCore.QSize(100, 27))
+        self.Bplay.setMaximumSize(QtCore.QSize(100, 27))
         self.Bplay.setCheckable(True)
         self.Bplay.setObjectName(_fromUtf8("Bplay"))
         self.formLayout_5.setWidget(5, QtGui.QFormLayout.FieldRole, self.Bplay)
@@ -158,6 +164,7 @@ class Ui_mainWindow(object):
         sizePolicy.setHeightForWidth(self.Bstop.sizePolicy().hasHeightForWidth())
         self.Bstop.setSizePolicy(sizePolicy)
         self.Bstop.setMinimumSize(QtCore.QSize(100, 27))
+        self.Bstop.setMaximumSize(QtCore.QSize(100, 27))
         self.Bstop.setObjectName(_fromUtf8("Bstop"))
         self.formLayout_5.setWidget(6, QtGui.QFormLayout.FieldRole, self.Bstop)
         self.label_18 = QtGui.QLabel(self.tab1)
@@ -166,7 +173,8 @@ class Ui_mainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_18.sizePolicy().hasHeightForWidth())
         self.label_18.setSizePolicy(sizePolicy)
-        self.label_18.setMinimumSize(QtCore.QSize(80, 27))
+        self.label_18.setMinimumSize(QtCore.QSize(110, 27))
+        self.label_18.setMaximumSize(QtCore.QSize(110, 27))
         self.label_18.setObjectName(_fromUtf8("label_18"))
         self.formLayout_5.setWidget(7, QtGui.QFormLayout.LabelRole, self.label_18)
         self.last_value = QtGui.QLabel(self.tab1)
@@ -176,10 +184,18 @@ class Ui_mainWindow(object):
         sizePolicy.setHeightForWidth(self.last_value.sizePolicy().hasHeightForWidth())
         self.last_value.setSizePolicy(sizePolicy)
         self.last_value.setMinimumSize(QtCore.QSize(100, 27))
+        self.last_value.setMaximumSize(QtCore.QSize(100, 27))
         self.last_value.setAlignment(QtCore.Qt.AlignCenter)
         self.last_value.setObjectName(_fromUtf8("last_value"))
         self.formLayout_5.setWidget(7, QtGui.QFormLayout.FieldRole, self.last_value)
         self.label_19 = QtGui.QLabel(self.tab1)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_19.sizePolicy().hasHeightForWidth())
+        self.label_19.setSizePolicy(sizePolicy)
+        self.label_19.setMinimumSize(QtCore.QSize(110, 27))
+        self.label_19.setMaximumSize(QtCore.QSize(110, 27))
         font = QtGui.QFont()
         font.setBold(True)
         font.setWeight(75)
@@ -187,6 +203,8 @@ class Ui_mainWindow(object):
         self.label_19.setObjectName(_fromUtf8("label_19"))
         self.formLayout_5.setWidget(8, QtGui.QFormLayout.LabelRole, self.label_19)
         self.label_20 = QtGui.QLabel(self.tab1)
+        self.label_20.setMinimumSize(QtCore.QSize(110, 27))
+        self.label_20.setMaximumSize(QtCore.QSize(110, 27))
         self.label_20.setObjectName(_fromUtf8("label_20"))
         self.formLayout_5.setWidget(9, QtGui.QFormLayout.LabelRole, self.label_20)
         self.dac_value = QtGui.QDoubleSpinBox(self.tab1)
@@ -196,6 +214,7 @@ class Ui_mainWindow(object):
         sizePolicy.setHeightForWidth(self.dac_value.sizePolicy().hasHeightForWidth())
         self.dac_value.setSizePolicy(sizePolicy)
         self.dac_value.setMinimumSize(QtCore.QSize(100, 27))
+        self.dac_value.setMaximumSize(QtCore.QSize(100, 27))
         self.dac_value.setDecimals(3)
         self.dac_value.setSingleStep(0.1)
         self.dac_value.setObjectName(_fromUtf8("dac_value"))
@@ -207,20 +226,45 @@ class Ui_mainWindow(object):
         sizePolicy.setHeightForWidth(self.Bset_voltage.sizePolicy().hasHeightForWidth())
         self.Bset_voltage.setSizePolicy(sizePolicy)
         self.Bset_voltage.setMinimumSize(QtCore.QSize(100, 27))
+        self.Bset_voltage.setMaximumSize(QtCore.QSize(100, 27))
         self.Bset_voltage.setObjectName(_fromUtf8("Bset_voltage"))
         self.formLayout_5.setWidget(10, QtGui.QFormLayout.FieldRole, self.Bset_voltage)
-        self.horizontalLayout.addLayout(self.formLayout_5)
+        self.horizontalLayout_6.addLayout(self.formLayout_5)
+        self.verticalLayout_2 = QtGui.QVBoxLayout()
+        self.verticalLayout_2.setObjectName(_fromUtf8("verticalLayout_2"))
         self.plotWidget = MPL_Widget(self.tab1)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.plotWidget.sizePolicy().hasHeightForWidth())
         self.plotWidget.setSizePolicy(sizePolicy)
-        self.plotWidget.setMinimumSize(QtCore.QSize(520, 532))
+        self.plotWidget.setMinimumSize(QtCore.QSize(560, 400))
         self.plotWidget.setMaximumSize(QtCore.QSize(16777215, 16777215))
         self.plotWidget.setObjectName(_fromUtf8("plotWidget"))
-        self.horizontalLayout.addWidget(self.plotWidget)
-        self.horizontalLayout_6.addLayout(self.horizontalLayout)
+        self.verticalLayout_2.addWidget(self.plotWidget)
+        self.horizontalLayout = QtGui.QHBoxLayout()
+        self.horizontalLayout.setSizeConstraint(QtGui.QLayout.SetMinimumSize)
+        self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
+        spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem)
+        self.cBosc = QtGui.QCheckBox(self.tab1)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.cBosc.sizePolicy().hasHeightForWidth())
+        self.cBosc.setSizePolicy(sizePolicy)
+        self.cBosc.setMinimumSize(QtCore.QSize(165, 22))
+        self.cBosc.setMaximumSize(QtCore.QSize(165, 22))
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        self.cBosc.setFont(font)
+        self.cBosc.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.cBosc.setAutoFillBackground(False)
+        self.cBosc.setObjectName(_fromUtf8("cBosc"))
+        self.horizontalLayout.addWidget(self.cBosc)
+        self.verticalLayout_2.addLayout(self.horizontalLayout)
+        self.horizontalLayout_6.addLayout(self.verticalLayout_2)
         self.tabWidget.addTab(self.tab1, _fromUtf8(""))
         self.tab_2 = QtGui.QWidget()
         self.tab_2.setObjectName(_fromUtf8("tab_2"))
@@ -319,10 +363,10 @@ class Ui_mainWindow(object):
         self.DDI4 = QtGui.QLCDNumber(self.page_11)
         self.DDI4.setGeometry(QtCore.QRect(10, 15, 40, 40))
         self.DDI4.setStyleSheet(_fromUtf8("color: rgb(0, 170, 0);\n"
-                                "background-color: rgb(255, 255, 255);\n"
-                                "\n"
-                                "\n"
-                                ""))
+"background-color: rgb(255, 255, 255);\n"
+"\n"
+"\n"
+""))
         self.DDI4.setFrameShape(QtGui.QFrame.StyledPanel)
         self.DDI4.setFrameShadow(QtGui.QFrame.Raised)
         self.DDI4.setLineWidth(1)
@@ -336,9 +380,9 @@ class Ui_mainWindow(object):
         self.SDO4 = QtGui.QSlider(self.page_12)
         self.SDO4.setGeometry(QtCore.QRect(0, 20, 65, 29))
         self.SDO4.setStyleSheet(_fromUtf8("alternate-background-color: rgb(0, 170, 0);\n"
-                                "color: rgb(0, 170, 0);\n"
-                                "selection-background-color: rgb(0, 170, 0);\n"
-                                ""))
+"color: rgb(0, 170, 0);\n"
+"selection-background-color: rgb(0, 170, 0);\n"
+""))
         self.SDO4.setMaximum(1)
         self.SDO4.setTracking(True)
         self.SDO4.setOrientation(QtCore.Qt.Horizontal)
@@ -379,10 +423,10 @@ class Ui_mainWindow(object):
         self.DDI5 = QtGui.QLCDNumber(self.page_13)
         self.DDI5.setGeometry(QtCore.QRect(10, 15, 40, 40))
         self.DDI5.setStyleSheet(_fromUtf8("color: rgb(0, 170, 0);\n"
-                                          "background-color: rgb(255, 255, 255);\n"
-                                          "\n"
-                                          "\n"
-                                          ""))
+"background-color: rgb(255, 255, 255);\n"
+"\n"
+"\n"
+""))
         self.DDI5.setFrameShape(QtGui.QFrame.StyledPanel)
         self.DDI5.setFrameShadow(QtGui.QFrame.Raised)
         self.DDI5.setLineWidth(1)
@@ -396,9 +440,9 @@ class Ui_mainWindow(object):
         self.SDO5 = QtGui.QSlider(self.page_14)
         self.SDO5.setGeometry(QtCore.QRect(0, 20, 65, 29))
         self.SDO5.setStyleSheet(_fromUtf8("alternate-background-color: rgb(0, 170, 0);\n"
-                                          "color: rgb(0, 170, 0);\n"
-                                          "selection-background-color: rgb(0, 170, 0);\n"
-                                          ""))
+"color: rgb(0, 170, 0);\n"
+"selection-background-color: rgb(0, 170, 0);\n"
+""))
         self.SDO5.setMaximum(1)
         self.SDO5.setTracking(True)
         self.SDO5.setOrientation(QtCore.Qt.Horizontal)
@@ -446,10 +490,10 @@ class Ui_mainWindow(object):
         self.DDI2 = QtGui.QLCDNumber(self.page_7)
         self.DDI2.setGeometry(QtCore.QRect(10, 15, 40, 40))
         self.DDI2.setStyleSheet(_fromUtf8("color: rgb(0, 170, 0);\n"
-                                          "background-color: rgb(255, 255, 255);\n"
-                                          "\n"
-                                          "\n"
-                                          ""))
+"background-color: rgb(255, 255, 255);\n"
+"\n"
+"\n"
+""))
         self.DDI2.setFrameShape(QtGui.QFrame.StyledPanel)
         self.DDI2.setFrameShadow(QtGui.QFrame.Raised)
         self.DDI2.setLineWidth(1)
@@ -463,9 +507,9 @@ class Ui_mainWindow(object):
         self.SDO2 = QtGui.QSlider(self.page_8)
         self.SDO2.setGeometry(QtCore.QRect(0, 20, 65, 29))
         self.SDO2.setStyleSheet(_fromUtf8("alternate-background-color: rgb(0, 170, 0);\n"
-                                          "color: rgb(0, 170, 0);\n"
-                                          "selection-background-color: rgb(0, 170, 0);\n"
-                                          ""))
+"color: rgb(0, 170, 0);\n"
+"selection-background-color: rgb(0, 170, 0);\n"
+""))
         self.SDO2.setMaximum(1)
         self.SDO2.setTracking(True)
         self.SDO2.setOrientation(QtCore.Qt.Horizontal)
@@ -500,10 +544,10 @@ class Ui_mainWindow(object):
         self.DDI3 = QtGui.QLCDNumber(self.page_9)
         self.DDI3.setGeometry(QtCore.QRect(10, 15, 40, 40))
         self.DDI3.setStyleSheet(_fromUtf8("color: rgb(0, 170, 0);\n"
-                                          "background-color: rgb(255, 255, 255);\n"
-                                          "\n"
-                                          "\n"
-                                          ""))
+"background-color: rgb(255, 255, 255);\n"
+"\n"
+"\n"
+""))
         self.DDI3.setFrameShape(QtGui.QFrame.StyledPanel)
         self.DDI3.setFrameShadow(QtGui.QFrame.Raised)
         self.DDI3.setLineWidth(1)
@@ -517,9 +561,9 @@ class Ui_mainWindow(object):
         self.SDO3 = QtGui.QSlider(self.page_10)
         self.SDO3.setGeometry(QtCore.QRect(0, 20, 65, 29))
         self.SDO3.setStyleSheet(_fromUtf8("alternate-background-color: rgb(0, 170, 0);\n"
-                                          "color: rgb(0, 170, 0);\n"
-                                          "selection-background-color: rgb(0, 170, 0);\n"
-                                          ""))
+"color: rgb(0, 170, 0);\n"
+"selection-background-color: rgb(0, 170, 0);\n"
+""))
         self.SDO3.setMaximum(1)
         self.SDO3.setTracking(True)
         self.SDO3.setOrientation(QtCore.Qt.Horizontal)
@@ -554,10 +598,10 @@ class Ui_mainWindow(object):
         self.DDI6 = QtGui.QLCDNumber(self.page_15)
         self.DDI6.setGeometry(QtCore.QRect(10, 15, 40, 40))
         self.DDI6.setStyleSheet(_fromUtf8("color: rgb(0, 170, 0);\n"
-                                          "background-color: rgb(255, 255, 255);\n"
-                                          "\n"
-                                          "\n"
-                                          ""))
+"background-color: rgb(255, 255, 255);\n"
+"\n"
+"\n"
+""))
         self.DDI6.setFrameShape(QtGui.QFrame.StyledPanel)
         self.DDI6.setFrameShadow(QtGui.QFrame.Raised)
         self.DDI6.setLineWidth(1)
@@ -571,9 +615,9 @@ class Ui_mainWindow(object):
         self.SDO6 = QtGui.QSlider(self.page_16)
         self.SDO6.setGeometry(QtCore.QRect(0, 20, 65, 29))
         self.SDO6.setStyleSheet(_fromUtf8("alternate-background-color: rgb(0, 170, 0);\n"
-                                          "color: rgb(0, 170, 0);\n"
-                                          "selection-background-color: rgb(0, 170, 0);\n"
-                                          ""))
+"color: rgb(0, 170, 0);\n"
+"selection-background-color: rgb(0, 170, 0);\n"
+""))
         self.SDO6.setMaximum(1)
         self.SDO6.setTracking(True)
         self.SDO6.setOrientation(QtCore.Qt.Horizontal)
@@ -609,10 +653,10 @@ class Ui_mainWindow(object):
         self.DDI1.setGeometry(QtCore.QRect(10, 15, 40, 40))
         self.DDI1.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.DDI1.setStyleSheet(_fromUtf8("color: rgb(0, 170, 0);\n"
-                                "background-color: rgb(255, 255, 255);\n"
-                                "\n"
-                                "\n"
-                                ""))
+"background-color: rgb(255, 255, 255);\n"
+"\n"
+"\n"
+""))
         self.DDI1.setFrameShape(QtGui.QFrame.StyledPanel)
         self.DDI1.setFrameShadow(QtGui.QFrame.Raised)
         self.DDI1.setLineWidth(1)
@@ -637,8 +681,9 @@ class Ui_mainWindow(object):
         self.SDO1 = QtGui.QSlider(self.page_6)
         self.SDO1.setGeometry(QtCore.QRect(0, 20, 65, 29))
         self.SDO1.setStyleSheet(_fromUtf8("alternate-background-color: rgb(0, 170, 0);\n"
-                                          "color: rgb(0, 170, 0);\n"
-                                          "selection-background-color: rgb(0, 170, 0);\n"""))
+"color: rgb(0, 170, 0);\n"
+"selection-background-color: rgb(0, 170, 0);\n"
+""))
         self.SDO1.setMaximum(1)
         self.SDO1.setTracking(True)
         self.SDO1.setOrientation(QtCore.Qt.Horizontal)
@@ -1070,77 +1115,41 @@ class Ui_mainWindow(object):
         self.Digital6.setCurrentIndex(0)
         self.Digital1.setCurrentIndex(0)
         self.sW.setCurrentIndex(0)
-        QtCore.QObject.connect(self.Bstart_capture, QtCore.SIGNAL(_fromUtf8(
-                               "clicked(bool)")), self.Bstop_capture.setEnabled)
-        QtCore.QObject.connect(self.Bstop_capture, QtCore.SIGNAL(_fromUtf8(
-                               "clicked(bool)")), self.Bstop_capture.setEnabled)
-        QtCore.QObject.connect(self.Bstop_capture, QtCore.SIGNAL(_fromUtf8(
-                               "clicked(bool)")), self.Bstart_capture.toggle)
-        QtCore.QObject.connect(self.Bstart_counter, QtCore.SIGNAL(_fromUtf8(
-                               "toggled(bool)")), self.Bstop_counter.setEnabled)
-        QtCore.QObject.connect(self.Bset_pwm, QtCore.SIGNAL(_fromUtf8(
-                               "clicked(bool)")), self.Bstop_pwm.setEnabled)
-        QtCore.QObject.connect(self.Bstop_pwm, QtCore.SIGNAL(_fromUtf8(
-                               "clicked(bool)")), self.Bset_pwm.setChecked)
-        QtCore.QObject.connect(self.Bstop_pwm, QtCore.SIGNAL(_fromUtf8(
-                               "clicked(bool)")), self.Bstop_pwm.setEnabled)
-        QtCore.QObject.connect(self.Bset_pwm, QtCore.SIGNAL(_fromUtf8(
-                               "toggled(bool)")), self.Bset_pwm.setDisabled)
-        QtCore.QObject.connect(self.Bstop_pwm, QtCore.SIGNAL(_fromUtf8(
-                               "clicked(bool)")), self.Breset_pwm.setEnabled)
-        QtCore.QObject.connect(self.Bset_pwm, QtCore.SIGNAL(_fromUtf8(
-                               "clicked(bool)")), self.Breset_pwm.setEnabled)
-        QtCore.QObject.connect(self.Bstart_encoder, QtCore.SIGNAL(_fromUtf8(
-                               "clicked(bool)")), self.Bstop_encoder.setEnabled)
-        QtCore.QObject.connect(self.Bstop_encoder, QtCore.SIGNAL(_fromUtf8(
-                               "clicked(bool)")), self.Bstart_encoder.setChecked)
-        QtCore.QObject.connect(self.Bstart_encoder, QtCore.SIGNAL(_fromUtf8(
-                               "toggled(bool)")), self.Bstart_encoder.setDisabled)
-        QtCore.QObject.connect(self.Bstop_encoder, QtCore.SIGNAL(_fromUtf8(
-                               "clicked(bool)")), self.Bstop_encoder.setEnabled)
-        QtCore.QObject.connect(self.cbD2, QtCore.SIGNAL(_fromUtf8(
-                               "currentIndexChanged(int)")), self.Digital2.setCurrentIndex)
-        QtCore.QObject.connect(self.cbD3, QtCore.SIGNAL(_fromUtf8(
-                               "currentIndexChanged(int)")), self.Digital3.setCurrentIndex)
-        QtCore.QObject.connect(self.cbD4, QtCore.SIGNAL(_fromUtf8(
-                               "currentIndexChanged(int)")), self.Digital4.setCurrentIndex)
-        QtCore.QObject.connect(self.cbD5, QtCore.SIGNAL(_fromUtf8(
-                               "currentIndexChanged(int)")), self.Digital5.setCurrentIndex)
-        QtCore.QObject.connect(self.cbD6, QtCore.SIGNAL(_fromUtf8(
-                               "currentIndexChanged(int)")), self.Digital6.setCurrentIndex)
-        QtCore.QObject.connect(self.cb, QtCore.SIGNAL(_fromUtf8(
-                               "currentIndexChanged(int)")), self.sW.setCurrentIndex)
-        QtCore.QObject.connect(self.Bstop, QtCore.SIGNAL(_fromUtf8(
-                               "clicked(bool)")), self.Bplay.toggle)
-        QtCore.QObject.connect(self.Bplay, QtCore.SIGNAL(_fromUtf8(
-                               "clicked(bool)")), self.Bstop.setEnabled)
-        QtCore.QObject.connect(self.Bstop, QtCore.SIGNAL(_fromUtf8(
-                               "clicked(bool)")), self.Bstop.setEnabled)
-        QtCore.QObject.connect(self.SDO1, QtCore.SIGNAL(_fromUtf8(
-                               "valueChanged(int)")), self.label_17.setNum)
-        QtCore.QObject.connect(self.cbD1, QtCore.SIGNAL(_fromUtf8(
-                               "currentIndexChanged(int)")),
-                               self.Digital1.setCurrentIndex)
-        QtCore.QObject.connect(self.SDO2, QtCore.SIGNAL(_fromUtf8(
-                               "valueChanged(int)")), self.label_21.setNum)
-        QtCore.QObject.connect(self.SDO3, QtCore.SIGNAL(_fromUtf8(
-                               "valueChanged(int)")), self.label_22.setNum)
-        QtCore.QObject.connect(self.SDO4, QtCore.SIGNAL(_fromUtf8(
-                               "valueChanged(int)")), self.label_28.setNum)
-        QtCore.QObject.connect(self.SDO5, QtCore.SIGNAL(_fromUtf8(
-                               "valueChanged(int)")), self.label_29.setNum)
-        QtCore.QObject.connect(self.SDO6, QtCore.SIGNAL(_fromUtf8(
-                               "valueChanged(int)")), self.label_30.setNum)
-        QtCore.QObject.connect(self.Bplay, QtCore.SIGNAL(_fromUtf8(
-                               "toggled(bool)")), self.pos_channel.setDisabled)
-        QtCore.QObject.connect(self.Bplay, QtCore.SIGNAL(_fromUtf8(
-                               "toggled(bool)")), self.neg_channel.setDisabled)
-        QtCore.QObject.connect(self.Bplay, QtCore.SIGNAL(_fromUtf8(
-                               "toggled(bool)")), self.range.setDisabled)
-        QtCore.QObject.connect(self.Bplay, QtCore.SIGNAL(_fromUtf8("toggled(bool)")),
-                               self.sb_period.setDisabled)
-        QtCore.QObject.connect(self.Bstop_counter, QtCore.SIGNAL(_fromUtf8(
-                               "clicked(bool)")), self.Bstart_counter.toggle)
+        QtCore.QObject.connect(self.Bstart_capture, QtCore.SIGNAL(_fromUtf8("clicked(bool)")), self.Bstop_capture.setEnabled)
+        QtCore.QObject.connect(self.Bstop_capture, QtCore.SIGNAL(_fromUtf8("clicked(bool)")), self.Bstop_capture.setEnabled)
+        QtCore.QObject.connect(self.Bstop_capture, QtCore.SIGNAL(_fromUtf8("clicked(bool)")), self.Bstart_capture.toggle)
+        QtCore.QObject.connect(self.Bstart_counter, QtCore.SIGNAL(_fromUtf8("toggled(bool)")), self.Bstop_counter.setEnabled)
+        QtCore.QObject.connect(self.Bset_pwm, QtCore.SIGNAL(_fromUtf8("clicked(bool)")), self.Bstop_pwm.setEnabled)
+        QtCore.QObject.connect(self.Bstop_pwm, QtCore.SIGNAL(_fromUtf8("clicked(bool)")), self.Bset_pwm.setChecked)
+        QtCore.QObject.connect(self.Bstop_pwm, QtCore.SIGNAL(_fromUtf8("clicked(bool)")), self.Bstop_pwm.setEnabled)
+        QtCore.QObject.connect(self.Bset_pwm, QtCore.SIGNAL(_fromUtf8("toggled(bool)")), self.Bset_pwm.setDisabled)
+        QtCore.QObject.connect(self.Bstop_pwm, QtCore.SIGNAL(_fromUtf8("clicked(bool)")), self.Breset_pwm.setEnabled)
+        QtCore.QObject.connect(self.Bset_pwm, QtCore.SIGNAL(_fromUtf8("clicked(bool)")), self.Breset_pwm.setEnabled)
+        QtCore.QObject.connect(self.Bstart_encoder, QtCore.SIGNAL(_fromUtf8("clicked(bool)")), self.Bstop_encoder.setEnabled)
+        QtCore.QObject.connect(self.Bstop_encoder, QtCore.SIGNAL(_fromUtf8("clicked(bool)")), self.Bstart_encoder.setChecked)
+        QtCore.QObject.connect(self.Bstart_encoder, QtCore.SIGNAL(_fromUtf8("toggled(bool)")), self.Bstart_encoder.setDisabled)
+        QtCore.QObject.connect(self.Bstop_encoder, QtCore.SIGNAL(_fromUtf8("clicked(bool)")), self.Bstop_encoder.setEnabled)
+        QtCore.QObject.connect(self.cbD2, QtCore.SIGNAL(_fromUtf8("currentIndexChanged(int)")), self.Digital2.setCurrentIndex)
+        QtCore.QObject.connect(self.cbD3, QtCore.SIGNAL(_fromUtf8("currentIndexChanged(int)")), self.Digital3.setCurrentIndex)
+        QtCore.QObject.connect(self.cbD4, QtCore.SIGNAL(_fromUtf8("currentIndexChanged(int)")), self.Digital4.setCurrentIndex)
+        QtCore.QObject.connect(self.cbD5, QtCore.SIGNAL(_fromUtf8("currentIndexChanged(int)")), self.Digital5.setCurrentIndex)
+        QtCore.QObject.connect(self.cbD6, QtCore.SIGNAL(_fromUtf8("currentIndexChanged(int)")), self.Digital6.setCurrentIndex)
+        QtCore.QObject.connect(self.cb, QtCore.SIGNAL(_fromUtf8("currentIndexChanged(int)")), self.sW.setCurrentIndex)
+        QtCore.QObject.connect(self.Bstop, QtCore.SIGNAL(_fromUtf8("clicked(bool)")), self.Bplay.toggle)
+        QtCore.QObject.connect(self.Bplay, QtCore.SIGNAL(_fromUtf8("clicked(bool)")), self.Bstop.setEnabled)
+        QtCore.QObject.connect(self.Bstop, QtCore.SIGNAL(_fromUtf8("clicked(bool)")), self.Bstop.setEnabled)
+        QtCore.QObject.connect(self.SDO1, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), self.label_17.setNum)
+        QtCore.QObject.connect(self.cbD1, QtCore.SIGNAL(_fromUtf8("currentIndexChanged(int)")), self.Digital1.setCurrentIndex)
+        QtCore.QObject.connect(self.SDO2, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), self.label_21.setNum)
+        QtCore.QObject.connect(self.SDO3, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), self.label_22.setNum)
+        QtCore.QObject.connect(self.SDO4, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), self.label_28.setNum)
+        QtCore.QObject.connect(self.SDO5, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), self.label_29.setNum)
+        QtCore.QObject.connect(self.SDO6, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), self.label_30.setNum)
+        QtCore.QObject.connect(self.Bplay, QtCore.SIGNAL(_fromUtf8("toggled(bool)")), self.pos_channel.setDisabled)
+        QtCore.QObject.connect(self.Bplay, QtCore.SIGNAL(_fromUtf8("toggled(bool)")), self.neg_channel.setDisabled)
+        QtCore.QObject.connect(self.Bplay, QtCore.SIGNAL(_fromUtf8("toggled(bool)")), self.range.setDisabled)
+        QtCore.QObject.connect(self.Bplay, QtCore.SIGNAL(_fromUtf8("toggled(bool)")), self.sb_period.setDisabled)
+        QtCore.QObject.connect(self.Bstop_counter, QtCore.SIGNAL(_fromUtf8("clicked(bool)")), self.Bstart_counter.toggle)
         QtCore.QMetaObject.connectSlotsByName(mainWindow)
 
     def retranslateUi(self, mainWindow):
@@ -1157,8 +1166,8 @@ class Ui_mainWindow(object):
         self.label_19.setText(_translate("mainWindow", "Analog Output", None))
         self.label_20.setText(_translate("mainWindow", "DAC Value (V)", None))
         self.Bset_voltage.setText(_translate("mainWindow", "Set Voltage", None))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab1), _translate(
-                                  "mainWindow", "Analog I / O", None))
+        self.cBosc.setText(_translate("mainWindow", "Oscilloscope mode", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab1), _translate("mainWindow", "Analog I / O", None))
         self.label_7.setText(_translate("mainWindow", "Select Input or Output", None))
         self.label_8.setText(_translate("mainWindow", "D1", None))
         self.label_23.setText(_translate("mainWindow", "D5", None))
@@ -1185,8 +1194,7 @@ class Ui_mainWindow(object):
         self.label_30.setText(_translate("mainWindow", "0", None))
         self.label_17.setText(_translate("mainWindow", "0", None))
         self.Bupdate.setText(_translate("mainWindow", "Update", None))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate(
-                                  "mainWindow", "Digital I / O", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("mainWindow", "Digital I / O", None))
         self.label_25.setText(_translate("mainWindow", "Result:", None))
         self.label_3.setText(_translate("mainWindow", "Select Mode:", None))
         self.label_4.setText(_translate("mainWindow", "Resolution :", None))
@@ -1215,11 +1223,11 @@ class Ui_mainWindow(object):
         self.cb.setItemText(1, _translate("mainWindow", "Capture", None))
         self.cb.setItemText(2, _translate("mainWindow", "Couter", None))
         self.cb.setItemText(3, _translate("mainWindow", "PWM", None))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("mainWindow",
-                                  "Timer-Counter", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("mainWindow", "Timer-Counter", None))
         self.toolBar.setWindowTitle(_translate("mainWindow", "toolBar", None))
         self.actionConfig.setText(_translate("mainWindow", "config", None))
         self.actionCSV.setText(_translate("mainWindow", "CSV", None))
+
 
 if __name__ == "__main__":
     import sys
