@@ -15,10 +15,11 @@ from PyQt4.QtGui import QPalette, QIcon
 from opendaq import DAQ
 from opendaq.models import DAQModel
 
-from . import resources_rc
-from . import daq_control
-from . import config
-from .widgets import NavigationToolbar
+from daqcontrol import resources_rc
+from daqcontrol import daq_control
+from daqcontrol import config
+from daqcontrol import widgets
+from daqcontrol.widgets import NavigationToolbar
 
 BUFFER_SIZE = 400
 
@@ -71,7 +72,7 @@ class MyApp(QtGui.QMainWindow, daq_control.Ui_mainWindow):
             pass
         icons = [":/resources/house.png", ":/resources/pan.png", ":/resources/zoom.png",
                  ":/resources/customize.png", ":/resources/save.png"]
-        for action in nav.actions():
+        for action in nav.actions()[:-1]:
             if action.text() != 'Subplots': 
                 self.toolBar.addAction(action)
         for i, action in enumerate(self.toolBar.actions()[3:8]):
