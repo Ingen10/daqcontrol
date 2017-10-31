@@ -823,7 +823,7 @@ background-color: rgb(255, 255, 255);
              <property name="lineWidth">
               <number>1</number>
              </property>
-             <property name="numDigits">
+             <property name="digitCount">
               <number>1</number>
              </property>
              <property name="segmentStyle">
@@ -965,7 +965,7 @@ background-color: rgb(255, 255, 255);
              <property name="lineWidth">
               <number>1</number>
              </property>
-             <property name="numDigits">
+             <property name="digitCount">
               <number>1</number>
              </property>
              <property name="segmentStyle">
@@ -1120,7 +1120,7 @@ background-color: rgb(255, 255, 255);
              <property name="lineWidth">
               <number>1</number>
              </property>
-             <property name="numDigits">
+             <property name="digitCount">
               <number>1</number>
              </property>
              <property name="segmentStyle">
@@ -1242,7 +1242,7 @@ background-color: rgb(255, 255, 255);
              <property name="lineWidth">
               <number>1</number>
              </property>
-             <property name="numDigits">
+             <property name="digitCount">
               <number>1</number>
              </property>
              <property name="segmentStyle">
@@ -1364,7 +1364,7 @@ background-color: rgb(255, 255, 255);
              <property name="lineWidth">
               <number>1</number>
              </property>
-             <property name="numDigits">
+             <property name="digitCount">
               <number>1</number>
              </property>
              <property name="segmentStyle">
@@ -1489,7 +1489,7 @@ background-color: rgb(255, 255, 255);
              <property name="lineWidth">
               <number>1</number>
              </property>
-             <property name="numDigits">
+             <property name="digitCount">
               <number>1</number>
              </property>
              <property name="segmentStyle">
@@ -1591,7 +1591,7 @@ selection-background-color: rgb(0, 170, 0);
        <widget class="QStackedWidget" name="sW">
         <property name="geometry">
          <rect>
-          <x>0</x>
+          <x>10</x>
           <y>50</y>
           <width>280</width>
           <height>200</height>
@@ -2304,7 +2304,7 @@ selection-background-color: rgb(0, 170, 0);
        <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
-          <x>0</x>
+          <x>10</x>
           <y>10</y>
           <width>281</width>
           <height>41</height>

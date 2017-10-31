@@ -1,9 +1,10 @@
 import warnings
 import matplotlib
-from PyQt4.QtCore import *
-from PyQt4.QtGui import *
-from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
-from matplotlib.backends.backend_qt4 import NavigationToolbar2QT
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import QWidget, QVBoxLayout
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
+from matplotlib.backends.backend_qt5 import NavigationToolbar2QT
 from matplotlib.figure import Figure
 
 warnings.filterwarnings("ignore", category=matplotlib.cbook.mplDeprecation)

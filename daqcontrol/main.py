@@ -7,19 +7,20 @@ import sys
 import glob
 import csv
 import numpy as np
-from serial import SerialException
 
 import serial
-from PyQt4 import QtCore, QtGui
-from PyQt4.QtGui import QPalette, QIcon
+from serial import SerialException
+import PyQt5
+from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtGui import QPalette, QIcon
 from opendaq import DAQ
 from opendaq.models import DAQModel
 
-from daqcontrol import resources_rc
-from daqcontrol import daq_control
-from daqcontrol import config
-from daqcontrol import widgets
-from daqcontrol.widgets import NavigationToolbar
+from . import resources_rc
+from . import daq_control
+from . import config
+from . import widgets
+from .widgets import NavigationToolbar
 
 BUFFER_SIZE = 400
 
@@ -41,21 +42,18 @@ def list_serial_ports():
             s = serial.Serial(port)
             s.close()
             result.append(port)
-        except (OSError, serial.SerialException):
+        except:
             pass
     return result
 
 
-class MyApp(QtGui.QMainWindow, daq_control.Ui_mainWindow):
+class MyApp(QtWidgets.QMainWindow, daq_control.Ui_mainWindow):
     def __init__(self, parent=None):
-        QtGui.QMainWindow.__init__(self, parent)
+        QtWidgets.QMainWindow.__init__(self, parent)
         self.setupUi(self)
         self.names = ['AGND', 'A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'VREF']
         self.cfg = QtCore.QSettings('opendaq')
-        if sys.version[0] == '2':
-            port_opendaq = str(self.cfg.value('port').toString())
-        else:
-            port_opendaq = str(self.cfg.value('port'))
+        port_opendaq = str(self.cfg.value('port'))
         try:
             self.daq = DAQ(port_opendaq)
         except SerialException:
@@ -97,7 +95,7 @@ class MyApp(QtGui.QMainWindow, daq_control.Ui_mainWindow):
         self.daq.set_analog(self.dac_value.value())
 
     def export_csv(self):
-        fname = QtGui.QFileDialog.getSaveFileName(self, 'Export as CSV')
+        fname = QtWidgets.QFileDialog.getSaveFileName(self, 'Export as CSV')
         fieldnames = ['Time (ms)', 'Voltage (V)']
         with open(fname + '.csv', 'w') as csvfile:
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
@@ -230,7 +228,7 @@ class MyApp(QtGui.QMainWindow, daq_control.Ui_mainWindow):
                 display_out[i].display(value)
 
 
-class Configuration(QtGui.QDialog, config.Ui_MainWindow):
+class Configuration(QtWidgets.QDialog, config.Ui_MainWindow):
     def __init__(self, parent=None):
         super(Configuration, self).__init__(parent)
         self.setupUi(self)
@@ -245,7 +243,7 @@ class Configuration(QtGui.QDialog, config.Ui_MainWindow):
 
 
 def main():
-    app = QtGui.QApplication(sys.argv)
+    app = QtWidgets.QApplication(sys.argv)
     dlg = MyApp()
     dlg.show()
     sys.exit(app.exec_())
