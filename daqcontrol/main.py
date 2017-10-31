@@ -95,9 +95,9 @@ class MyApp(QtWidgets.QMainWindow, daq_control.Ui_mainWindow):
         self.daq.set_analog(self.dac_value.value())
 
     def export_csv(self):
-        fname = QtWidgets.QFileDialog.getSaveFileName(self, 'Export as CSV')
+        fname = QtWidgets.QFileDialog.getSaveFileName(self, 'Export as CSV')[0]
         fieldnames = ['Time (ms)', 'Voltage (V)']
-        with open(fname + '.csv', 'w') as csvfile:
+        with open('%s.csv' % fname, 'w') as csvfile:
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             writer.writeheader()
             j = 0
