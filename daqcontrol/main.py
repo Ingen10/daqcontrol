@@ -7,6 +7,7 @@ import sys
 import glob
 import csv
 import numpy as np
+import time
 
 import serial
 from serial import SerialException
@@ -16,7 +17,7 @@ from PyQt5.QtGui import QPalette, QIcon
 from opendaq import DAQ
 from opendaq.models import DAQModel
 
-from . import resources_rc
+from . import res_rc
 from . import daq_control
 from . import config
 from . import widgets
@@ -75,6 +76,8 @@ class MyApp(QtWidgets.QMainWindow, daq_control.Ui_mainWindow):
                 self.toolBar.addAction(action)
         for i, action in enumerate(self.toolBar.actions()[3:8]):
             action.setIcon(QIcon(icons[i]))
+        self.page = self.tabWidget.currentIndex()
+        self.tim_counter_index = self.cb.currentIndex()
         self.actionConfig.triggered.connect(self.get_port)
         self.actionCSV.triggered.connect(self.export_csv)
         self.Bstart_capture.clicked.connect(self.start_capture)
@@ -82,17 +85,39 @@ class MyApp(QtWidgets.QMainWindow, daq_control.Ui_mainWindow):
         self.Bstart_counter.clicked.connect(self.start_counter)
         self.Bstop_counter.clicked.connect(self.stop_counter)
         self.Bstop_pwm.clicked.connect(self.stop_pwm)
-        self.Breset_pwm.clicked.connect(self.reset_pwm)
         self.Bset_pwm.clicked.connect(self.set_pwm)
         self.Bstart_encoder.clicked.connect(self.start_encoder)
         self.Bstop_encoder.clicked.connect(self.stop_encoder)
         self.Bupdate.clicked.connect(self.digital_ports)
         self.Bset_voltage.clicked.connect(self.set_dac)
         self.Bplay.clicked.connect(self.play)
+        self.tabWidget.currentChanged.connect(lambda: self.page_change(self.page))
+        self.cb.currentIndexChanged.connect(lambda: self.tim_counter_change(self.tim_counter_index))
         self.mode_encoder.currentIndexChanged.connect(self.status_resolution)
 
     def set_dac(self):
         self.daq.set_analog(self.dac_value.value())
+
+    def tim_counter_change(self, tim_counter_index):
+        if tim_counter_index == 0 and self.Bstart_encoder.isChecked():
+            self.Bstop_encoder.click()
+        elif tim_counter_index == 1 and self.Bstart_capture.isChecked():
+            self.Bstop_capture.click()
+        elif tim_counter_index == 2 and self.Bstart_counter.isChecked():
+            self.Bstart_counter.click()
+        elif tim_counter_index == 3 and self.Bset_pwm.isChecked():
+            self.Bstop_pwm.click()
+        self.tim_counter_index = self.cb.currentIndex()
+
+    def page_change(self, page):
+        if page == 0:
+            self.daq.set_analog(0)
+            if self.Bplay.isChecked():
+                self.Bstop.click()
+        elif page == 2:
+            self.tim_counter_change(self.tim_counter_index)
+        self.page = self.tabWidget.currentIndex()
+
 
     def export_csv(self):
         fname = QtWidgets.QFileDialog.getSaveFileName(self, 'Export as CSV')[0]
@@ -159,7 +184,7 @@ class MyApp(QtWidgets.QMainWindow, daq_control.Ui_mainWindow):
             else:
                 self.pos_channel.addItem(self.names[9])
         for gain in model.adc.pga_gains:
-            self.range.addItem(str(gain))
+            self.range.addItem('x%s' % str(gain))
         self.dac_value.setMinimum(model.dac.vmin)
         self.dac_value.setMaximum(model.dac.vmax)
 
@@ -175,18 +200,27 @@ class MyApp(QtWidgets.QMainWindow, daq_control.Ui_mainWindow):
 
     def start_counter(self):
         self.daq.init_counter(0)
+        self.daq.init_counter(0)
+        while not(self.Bstop_counter.isChecked()):
+            time.sleep(.1)
+            counter = int(self.daq.get_counter(reset=False))
+            self.counter_result.setText(str(counter))
+            QtCore.QCoreApplication.processEvents()
 
     def stop_counter(self):
         self.daq.stop_capture()
+        self.daq.stop()
         self.counter_result.setText(str(self.daq.get_counter(0)))
 
     def start_capture(self):
-        self.daq.init_capture(self.reference_period.value())
+        self.daq.init_capture(int(1000 * self.reference_period.value()))
 
     def stop_capture(self):
         self.daq.stop_capture()
         modo = self.cbTime.currentIndex()
-        self.lEPeriod.setText(str(self.daq.get_capture(modo)[1]))
+        result =  self.daq.get_capture(modo)[1]
+        self.lEPeriod.setText(str((result / 1000.0)))
+        self.lEHz.setText(str(round(((1000000.0/ result) if result else 0), 3)))
 
     def stop_pwm(self):
         self.daq.stop_capture()
@@ -197,19 +231,20 @@ class MyApp(QtWidgets.QMainWindow, daq_control.Ui_mainWindow):
         self.duty = int(self.dutyPWM.value() * 1023 / 100)
         self.daq.init_pwm(self.duty, self.period_PWM)
 
-    def reset_pwm(self):
-        self.stop_pwm()
-        self.set_pwm()
-
     def status_resolution(self):
         self.resolution_encoder.setEnabled(False if self.mode_encoder.currentIndex() else True)
 
     def start_encoder(self):
         self.daq.init_encoder(self.resolution_encoder.value())
+        result = 0
+        while not(self.Bstop_encoder.isChecked()):
+            time.sleep(.1)
+            result = int(self.daq.get_encoder())
+            self.result_encoder.setText(str(result))
+            QtCore.QCoreApplication.processEvents()
 
     def stop_encoder(self):
         self.daq.stop_encoder()
-        self.result_encoder.setText(str(self.daq.get_encoder()))
 
     def digital_ports(self):
         ports_mode = [self.cbD1, self.cbD2, self.cbD3, self.cbD4, self.cbD5, self.cbD6]
