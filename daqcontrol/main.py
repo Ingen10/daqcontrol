@@ -117,6 +117,8 @@ class MyApp(QtWidgets.QMainWindow, daq_control.Ui_mainWindow):
         elif page == 2:
             self.tim_counter_change(self.tim_counter_index)
         self.page = self.tabWidget.currentIndex()
+        for i, action in enumerate(self.toolBar.actions()[1:8]):
+            action.setEnabled(not(bool(self.page)))
 
 
     def export_csv(self):
