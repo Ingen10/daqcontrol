@@ -11,16 +11,13 @@ import time
 
 import serial
 from serial import SerialException
-import PyQt5
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5 import QtCore, QtWidgets
 from PyQt5.QtGui import QPalette, QIcon
 from opendaq import DAQ
 from opendaq.models import DAQModel
 
-from . import res_rc
 from . import daq_control
 from . import config
-from . import widgets
 from .widgets import NavigationToolbar
 
 BUFFER_SIZE = 400
@@ -72,7 +69,7 @@ class MyApp(QtWidgets.QMainWindow, daq_control.Ui_mainWindow):
         icons = [":/resources/house.png", ":/resources/pan.png", ":/resources/zoom.png",
                  ":/resources/customize.png", ":/resources/save.png"]
         for action in nav.actions()[:-1]:
-            if action.text() != 'Subplots': 
+            if action.text() != 'Subplots':
                 self.toolBar.addAction(action)
         for i, action in enumerate(self.toolBar.actions()[3:8]):
             action.setIcon(QIcon(icons[i]))
@@ -119,7 +116,6 @@ class MyApp(QtWidgets.QMainWindow, daq_control.Ui_mainWindow):
         self.page = self.tabWidget.currentIndex()
         for i, action in enumerate(self.toolBar.actions()[1:8]):
             action.setEnabled(not(bool(self.page)))
-
 
     def export_csv(self):
         fname = QtWidgets.QFileDialog.getSaveFileName(self, 'Export as CSV')[0]
@@ -197,7 +193,8 @@ class MyApp(QtWidgets.QMainWindow, daq_control.Ui_mainWindow):
         self.cfg.setValue('port', port_opendaq)
         self.daq = DAQ(str(port_opendaq))
         self.tabWidget.setEnabled(bool(port_opendaq))
-        self.statusBar.showMessage("Hardware Version: %s   Firmware Version: %s" % (self.daq.hw_ver[1], self.daq.fw_ver))
+        self.statusBar.showMessage("Hardware Version: %s   Firmware Version: %s" % (self.daq.hw_ver[1],
+                                                                                    self.daq.fw_ver))
         self.get_cb_values()
 
     def start_counter(self):
@@ -220,9 +217,9 @@ class MyApp(QtWidgets.QMainWindow, daq_control.Ui_mainWindow):
     def stop_capture(self):
         self.daq.stop_capture()
         modo = self.cbTime.currentIndex()
-        result =  self.daq.get_capture(modo)[1]
+        result = self.daq.get_capture(modo)[1]
         self.lEPeriod.setText(str((result / 1000.0)))
-        self.lEHz.setText(str(round(((1000000.0/ result) if result else 0), 3)))
+        self.lEHz.setText(str(round(((1000000.0 / result) if result else 0), 3)))
 
     def stop_pwm(self):
         self.daq.stop_capture()
