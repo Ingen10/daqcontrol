@@ -7,5 +7,10 @@
     <file>resources/save.png</file>
     <file>resources/customize.png</file>
     <file>resources/zoom.png</file>
+    <file>resources/led-green.png</file>
+    <file>resources/led-red.png</file>
+    <file>resources/led-off.png</file>
+    <file>resources/switch-on.png</file>
+    <file>resources/switch-off.png</file>
 </qresource>
 </RCC>

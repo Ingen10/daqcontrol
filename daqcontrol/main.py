@@ -73,6 +73,8 @@ class MyApp(QtWidgets.QMainWindow, daq_control.Ui_mainWindow):
                 self.toolBar.addAction(action)
         for i, action in enumerate(self.toolBar.actions()[3:8]):
             action.setIcon(QIcon(icons[i]))
+        for s in [self.D1_in, self.D2_in, self.D3_in, self.D4_in, self.D5_in, self.D6_in]:
+            s.setWindowIcon(QIcon(":/resources/led-off.png"))
         self.page = self.tabWidget.currentIndex()
         self.tim_counter_index = self.cb.currentIndex()
         self.actionConfig.triggered.connect(self.get_port)
@@ -247,19 +249,15 @@ class MyApp(QtWidgets.QMainWindow, daq_control.Ui_mainWindow):
 
     def digital_ports(self):
         ports_mode = [self.cbD1, self.cbD2, self.cbD3, self.cbD4, self.cbD5, self.cbD6]
-        slider_out = [self.SDO1, self.SDO2, self.SDO3, self.SDO4, self.SDO5, self.SDO6]
-        display_out = [self.DDI1, self.DDI2, self.DDI3, self.DDI4, self.DDI5, self.DDI6]
-
+        switchs = [self.switch1, self.switch2, self.switch3, self.switch4, self.switch5, self.switch6]
+        DIs = [self.D1_in, self.D2_in, self.D3_in, self.D4_in, self.D5_in, self.D6_in] 
         for i in range(6):
             self.daq.set_pio_dir((i+1), ports_mode[i].currentIndex())
             if ports_mode[i].currentIndex():
-                self.daq.set_pio((i+1), slider_out[i].value())
+                self.daq.set_pio((i+1), int(switchs[i].isChecked()))
             else:
-                value = 1 if self.daq.read_pio(i+1) else 0
-                palette = display_out[i].palette()
-                palette.setColor(QPalette.WindowText, QtCore.Qt.green if value else QtCore.Qt.red)
-                display_out[i].setPalette(palette)
-                display_out[i].display(value)
+                value = int(self.daq.read_pio(i+1))
+                DIs[i].setCurrentIndex((value + 1))
 
 
 class Configuration(QtWidgets.QDialog, config.Ui_MainWindow):
