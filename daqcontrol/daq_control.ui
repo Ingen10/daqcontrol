@@ -768,11 +768,9 @@
                   <height>70</height>
                  </size>
                 </property>
-                <widget class="QWidget" name="page_8">
-                 <property name="styleSheet">
-                  <string notr="true">image: url(:/resources/led-off.png);</string>
-                 </property>
-                </widget>
+                <property name="currentIndex">
+                 <number>0</number>
+                </property>
                 <widget class="QWidget" name="page_9">
                  <property name="styleSheet">
                   <string notr="true">image: url(:/resources/led-red.png);</string>
@@ -906,11 +904,6 @@ border:none;</string>
                 <property name="currentIndex">
                  <number>0</number>
                 </property>
-                <widget class="QWidget" name="page_14">
-                 <property name="styleSheet">
-                  <string notr="true">image: url(:/resources/led-off.png);</string>
-                 </property>
-                </widget>
                 <widget class="QWidget" name="page_15">
                  <property name="styleSheet">
                   <string notr="true">image: url(:/resources/led-red.png);</string>
@@ -1048,11 +1041,6 @@ border:none;</string>
                   <height>70</height>
                  </size>
                 </property>
-                <widget class="QWidget" name="page_17">
-                 <property name="styleSheet">
-                  <string notr="true">image: url(:/resources/led-off.png);</string>
-                 </property>
-                </widget>
                 <widget class="QWidget" name="page_18">
                  <property name="styleSheet">
                   <string notr="true">image: url(:/resources/led-red.png);</string>
@@ -1256,11 +1244,6 @@ border:none;</string>
                 <property name="currentIndex">
                  <number>0</number>
                 </property>
-                <widget class="QWidget" name="page_5">
-                 <property name="styleSheet">
-                  <string notr="true">image: url(:/resources/led-off.png);</string>
-                 </property>
-                </widget>
                 <widget class="QWidget" name="page_7">
                  <property name="styleSheet">
                   <string notr="true">image: url(:/resources/led-red.png);</string>
@@ -1342,34 +1325,6 @@ border:none;</string>
               </property>
              </widget>
             </item>
-            <item row="6" column="2">
-             <widget class="QPushButton" name="Bupdate">
-              <property name="enabled">
-               <bool>true</bool>
-              </property>
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>120</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="sizeIncrement">
-               <size>
-                <width>0</width>
-                <height>30</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>Update</string>
-              </property>
-             </widget>
-            </item>
             <item row="2" column="2">
              <widget class="QStackedWidget" name="Digital3">
               <property name="sizePolicy">
@@ -1418,11 +1373,6 @@ border:none;</string>
                   <height>70</height>
                  </size>
                 </property>
-                <widget class="QWidget" name="page_11">
-                 <property name="styleSheet">
-                  <string notr="true">image: url(:/resources/led-off.png);</string>
-                 </property>
-                </widget>
                 <widget class="QWidget" name="page_12">
                  <property name="styleSheet">
                   <string notr="true">image: url(:/resources/led-red.png);</string>
@@ -1527,11 +1477,6 @@ border:none;</string>
                 <property name="currentIndex">
                  <number>0</number>
                 </property>
-                <widget class="QWidget" name="page_20">
-                 <property name="styleSheet">
-                  <string notr="true">image: url(:/resources/led-off.png);</string>
-                 </property>
-                </widget>
                 <widget class="QWidget" name="page_21">
                  <property name="styleSheet">
                   <string notr="true">image: url(:/resources/led-red.png);</string>
@@ -2197,7 +2142,10 @@ border:none;</string>
                     <string>Stop Capture</string>
                    </property>
                    <property name="checkable">
-                    <bool>false</bool>
+                    <bool>true</bool>
+                   </property>
+                   <property name="checked">
+                    <bool>true</bool>
                    </property>
                   </widget>
                  </item>
@@ -2667,38 +2615,6 @@ border:none;</string>
  </resources>
  <connections>
   <connection>
-   <sender>Bstop_capture</sender>
-   <signal>clicked(bool)</signal>
-   <receiver>Bstop_capture</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>140</x>
-     <y>119</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>140</x>
-     <y>119</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>Bstart_capture</sender>
-   <signal>clicked(bool)</signal>
-   <receiver>Bstop_capture</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>140</x>
-     <y>119</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>140</x>
-     <y>119</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>Bset_pwm</sender>
    <signal>clicked(bool)</signal>
    <receiver>Bstop_pwm</receiver>
@@ -2807,22 +2723,6 @@ border:none;</string>
     <hint type="destinationlabel">
      <x>225</x>
      <y>305</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>Bstop_capture</sender>
-   <signal>clicked(bool)</signal>
-   <receiver>Bstart_capture</receiver>
-   <slot>toggle()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>140</x>
-     <y>119</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>140</x>
-     <y>119</y>
     </hint>
    </hints>
   </connection>
@@ -3095,6 +2995,54 @@ border:none;</string>
     <hint type="destinationlabel">
      <x>231</x>
      <y>567</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Bstart_capture</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>Bstop_capture</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>208</x>
+     <y>325</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>208</x>
+     <y>358</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Bstart_capture</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>Bstop_capture</receiver>
+   <slot>toggle()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>208</x>
+     <y>325</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>208</x>
+     <y>358</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Bstop_capture</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>Bstart_capture</receiver>
+   <slot>toggle()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>208</x>
+     <y>358</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>208</x>
+     <y>325</y>
     </hint>
    </hints>
   </connection>

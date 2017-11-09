@@ -51,6 +51,7 @@ class MyApp(QtWidgets.QMainWindow, daq_control.Ui_mainWindow):
         QtWidgets.QMainWindow.__init__(self, parent)
         self.setupUi(self)
         self.names = ['AGND', 'A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'VREF']
+        self.stop = 0
         self.cfg = QtCore.QSettings('opendaq')
         port_opendaq = str(self.cfg.value('port'))
         try:
@@ -88,7 +89,7 @@ class MyApp(QtWidgets.QMainWindow, daq_control.Ui_mainWindow):
         self.Bset_pwm.clicked.connect(self.set_pwm)
         self.Bstart_encoder.clicked.connect(self.start_encoder)
         self.Bstop_encoder.clicked.connect(self.stop_encoder)
-        self.Bupdate.clicked.connect(self.digital_ports)
+        #self.Bupdate.clicked.connect(self.digital_ports)
         self.Bset_voltage.clicked.connect(self.set_dac)
         self.Bplay.clicked.connect(self.play)
         self.tabWidget.currentChanged.connect(lambda: self.page_change(self.page))
@@ -119,6 +120,8 @@ class MyApp(QtWidgets.QMainWindow, daq_control.Ui_mainWindow):
         self.page = self.tabWidget.currentIndex()
         for i, action in enumerate(self.toolBar.actions()[1:8]):
             action.setEnabled(not(bool(self.page)))
+        if self.page == 1:
+            self.digital_ports()
 
     def export_csv(self):
         fname = QtWidgets.QFileDialog.getSaveFileName(self, 'Export as CSV')[0]
@@ -151,7 +154,7 @@ class MyApp(QtWidgets.QMainWindow, daq_control.Ui_mainWindow):
         self.daq.conf_adc(pinput, ninput, gain=self.range.currentIndex())
 
     def update(self):
-        if self.Bplay.isChecked():
+        if self.Bplay.isChecked() and not(self.stop):
             self.plot()
             timer = QtCore.QTimer()
             timer.timeout.connect(self.update)
@@ -207,7 +210,7 @@ class MyApp(QtWidgets.QMainWindow, daq_control.Ui_mainWindow):
     def start_counter(self):
         self.daq.init_counter(0)
         self.daq.init_counter(0)
-        while not(self.Bstop_counter.isChecked()):
+        while not(self.Bstop_counter.isChecked()) and not(self.stop):
             time.sleep(.1)
             counter = int(self.daq.get_counter(reset=False))
             self.counter_result.setText(str(counter))
@@ -220,13 +223,23 @@ class MyApp(QtWidgets.QMainWindow, daq_control.Ui_mainWindow):
 
     def start_capture(self):
         self.daq.init_capture(int(1000 * self.reference_period.value()))
+        while not(self.Bstop_capture.isChecked()) and not(self.stop):
+            time.sleep(.1)
+            modo = self.cbTime.currentIndex()
+            result = self.daq.get_capture(modo)[1]
+            frec = self.daq.get_capture(2)[1]
+            self.lEPeriod.setText(str((result / 1000.0)))
+            self.lEHz.setText(str(round(((1000000.0 / frec) if frec else 0), 3)))
+            QtCore.QCoreApplication.processEvents()
 
     def stop_capture(self):
         self.daq.stop_capture()
+        '''
         modo = self.cbTime.currentIndex()
         result = self.daq.get_capture(modo)[1]
         self.lEPeriod.setText(str((result / 1000.0)))
         self.lEHz.setText(str(round(((1000000.0 / result) if result else 0), 3)))
+        '''
 
     def stop_pwm(self):
         self.daq.stop_capture()
@@ -243,7 +256,7 @@ class MyApp(QtWidgets.QMainWindow, daq_control.Ui_mainWindow):
     def start_encoder(self):
         self.daq.init_encoder(self.resolution_encoder.value())
         result = 0
-        while not(self.Bstop_encoder.isChecked()):
+        while not(self.Bstop_encoder.isChecked()) and not(self.stop):
             time.sleep(.1)
             result = int(self.daq.get_encoder())
             self.result_encoder.setText(str(result))
@@ -255,15 +268,20 @@ class MyApp(QtWidgets.QMainWindow, daq_control.Ui_mainWindow):
     def digital_ports(self):
         ports_mode = [self.cbD1, self.cbD2, self.cbD3, self.cbD4, self.cbD5, self.cbD6]
         switchs = [self.switch1, self.switch2, self.switch3, self.switch4, self.switch5, self.switch6]
-        DIs = [self.D1_in, self.D2_in, self.D3_in, self.D4_in, self.D5_in, self.D6_in] 
-        for i in range(6):
-            self.daq.set_pio_dir((i+1), ports_mode[i].currentIndex())
-            if ports_mode[i].currentIndex():
-                self.daq.set_pio((i+1), int(switchs[i].isChecked()))
-            else:
-                value = int(self.daq.read_pio(i+1))
-                DIs[i].setCurrentIndex((value + 1))
+        DIs = [self.D1_in, self.D2_in, self.D3_in, self.D4_in, self.D5_in, self.D6_in]
+        while (not(self.stop) and self.tabWidget.currentIndex() == 1):
+            time.sleep(.3)
+            for i in range(6):
+                self.daq.set_pio_dir((i+1), ports_mode[i].currentIndex())
+                if ports_mode[i].currentIndex():
+                    self.daq.set_pio((i+1), int(switchs[i].isChecked()))
+                else:
+                    value = int(self.daq.read_pio(i+1))
+                    DIs[i].setCurrentIndex((value))
+                    QtCore.QCoreApplication.processEvents()
 
+    def closeEvent(self, evnt):
+        self.stop = 1
 
 class Configuration(QtWidgets.QDialog, config.Ui_MainWindow):
     def __init__(self, parent=None):
