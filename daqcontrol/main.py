@@ -15,6 +15,7 @@ from PyQt5 import QtCore, QtWidgets
 from PyQt5.QtGui import QPalette, QIcon
 from opendaq import DAQ
 from opendaq.models import DAQModel
+from opendaq.common import LengthError
 
 from . import daq_control
 from . import config
@@ -40,7 +41,7 @@ def list_serial_ports():
             s = serial.Serial(port)
             s.close()
             result.append(port)
-        except:
+        except SerialException:
             pass
     return result
 
@@ -54,7 +55,7 @@ class MyApp(QtWidgets.QMainWindow, daq_control.Ui_mainWindow):
         port_opendaq = str(self.cfg.value('port'))
         try:
             self.daq = DAQ(port_opendaq)
-        except SerialException:
+        except (LengthError, SerialException):
             port_opendaq = ''
         self.tabWidget.setEnabled(bool(port_opendaq))
         if port_opendaq:
@@ -191,13 +192,17 @@ class MyApp(QtWidgets.QMainWindow, daq_control.Ui_mainWindow):
     def get_port(self):
         dlg = Configuration(self)
         if dlg.exec_() != '':
-            port_opendaq = dlg.return_port()
-        self.cfg.setValue('port', port_opendaq)
-        self.daq = DAQ(str(port_opendaq))
+            port_opendaq = dlg.return_port() 
+        try:
+        	self.daq = DAQ(str(port_opendaq))
+        except (LengthError, SerialException):
+        	port_opendaq = ''
         self.tabWidget.setEnabled(bool(port_opendaq))
-        self.statusBar.showMessage("Hardware Version: %s   Firmware Version: %s" % (self.daq.hw_ver[1],
-                                                                                    self.daq.fw_ver))
-        self.get_cb_values()
+        if port_opendaq:
+        	self.cfg.setValue('port', port_opendaq)
+        	self.statusBar.showMessage("Hardware Version: %s   Firmware Version: %s" % (self.daq.hw_ver[1],
+                                                                                        self.daq.fw_ver))
+        	self.get_cb_values()
 
     def start_counter(self):
         self.daq.init_counter(0)
