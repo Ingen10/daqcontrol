@@ -20,6 +20,7 @@ from opendaq.common import LengthError
 from . import daq_control
 from . import config
 from .widgets import NavigationToolbar
+from . import axes_op
 
 BUFFER_SIZE = 400
 
@@ -69,16 +70,22 @@ class MyApp(QtWidgets.QMainWindow, daq_control.Ui_mainWindow):
         except AttributeError:
             pass
         icons = [":/resources/house.png", ":/resources/pan.png", ":/resources/zoom.png",
-                 ":/resources/customize.png", ":/resources/save.png"]
-        for action in nav.actions()[:-1]:
-            if action.text() != 'Subplots':
+                 ":/resources/save.png"]
+        actions_names = ['Home', 'Pan', 'Zoom', 'Save']
+        for action in nav.actions():
+            if action.text() in actions_names:
                 self.toolBar.addAction(action)
-        for i, action in enumerate(self.toolBar.actions()[3:8]):
+        for i, action in enumerate(self.toolBar.actions()[4:8]):
             action.setIcon(QIcon(icons[i]))
         for s in [self.D1_in, self.D2_in, self.D3_in, self.D4_in, self.D5_in, self.D6_in]:
             s.setWindowIcon(QIcon(":/resources/led-off.png"))
+
+        #  Axes configuration window
+        self.dlg_axes = AxesConfiguration(self.plotWidget)
+
         self.page = self.tabWidget.currentIndex()
         self.tim_counter_index = self.cb.currentIndex()
+
         self.actionConfig.triggered.connect(self.get_port)
         self.actionCSV.triggered.connect(self.export_csv)
         self.Bstart_capture.clicked.connect(self.start_capture)
@@ -89,8 +96,9 @@ class MyApp(QtWidgets.QMainWindow, daq_control.Ui_mainWindow):
         self.Bset_pwm.clicked.connect(self.set_pwm)
         self.Bstart_encoder.clicked.connect(self.start_encoder)
         self.Bstop_encoder.clicked.connect(self.stop_encoder)
-        #self.Bupdate.clicked.connect(self.digital_ports)
+        self.actionAxes.triggered.connect(self.change_axes)
         self.Bset_voltage.clicked.connect(self.set_dac)
+        self.Bstop.clicked.connect(self.stop_read)
         self.Bplay.clicked.connect(self.play)
         self.tabWidget.currentChanged.connect(lambda: self.page_change(self.page))
         self.cb.currentIndexChanged.connect(lambda: self.tim_counter_change(self.tim_counter_index))
@@ -98,6 +106,17 @@ class MyApp(QtWidgets.QMainWindow, daq_control.Ui_mainWindow):
 
     def set_dac(self):
         self.daq.set_analog(self.dac_value.value())
+
+    def change_axes(self):
+        self.dlg_axes.show()
+
+    def stop_read(self):
+        self.dlg_axes.configure_widgets()
+        actions_names = ['Axes', 'Home', 'Pan', 'Zoom', 'Save']
+        for action in self.toolBar.actions():
+            if action.text() in actions_names:
+                action.setEnabled(True)
+        self.daq.stop()    
 
     def tim_counter_change(self, tim_counter_index):
         if tim_counter_index == 0 and self.Bstart_encoder.isChecked():
@@ -135,6 +154,10 @@ class MyApp(QtWidgets.QMainWindow, daq_control.Ui_mainWindow):
                 j = j + 1
 
     def play(self):
+        actions_names = ['Axes', 'Home', 'Pan', 'Zoom', 'Save']
+        for action in self.toolBar.actions():
+            if action.text() in actions_names:
+                action.setEnabled(False)
         self.plotWidget.canvas.ax.cla()
         self.plotWidget.canvas.ax.grid(True)
         self.Y, self.X = [np.zeros(BUFFER_SIZE)] * 2
@@ -282,6 +305,44 @@ class MyApp(QtWidgets.QMainWindow, daq_control.Ui_mainWindow):
 
     def closeEvent(self, evnt):
         self.stop = 1
+
+
+class AxesConfiguration(QtWidgets.QDialog, axes_op.Ui_MainWindow):
+    def __init__(self, plot, parent=None):
+        super(AxesConfiguration, self).__init__(parent)
+        self.setupUi(self)
+        self.plt = plot
+        self.configure_widgets()
+        self.ax_Bok.clicked.connect(self.config_axes)
+
+
+    def configure_widgets(self):
+        x_limits = self.plt.canvas.ax.get_xlim()
+        self.ax_left.setText(str(x_limits[0]))
+        self.ax_right.setText(str(x_limits[1]))
+        y_limits = self.plt.canvas.ax.get_ylim()
+        self.ax_bottom.setText(str(y_limits[0]))
+        self.ax_top.setText(str(y_limits[1]))
+
+
+    def config_axes(self):
+        self.plt.canvas.ax.set_autoscaley_on(False)
+        self.plt.canvas.ax.set_autoscalex_on(False)
+        self.plt.canvas.ax.set_xlabel(self.ax_xlb.text(), fontsize=10)
+        self.plt.canvas.ax.set_ylabel(self.ax_ylb.text(), fontsize=10)
+        self.plt.canvas.ax.set_title(self.ax_title.text())
+        self.plt.canvas.ax.set_xlim(float(self.ax_left.text()), float(self.ax_right.text()))
+        self.plt.canvas.ax.set_ylim(float(self.ax_bottom.text()), float(self.ax_top.text()))
+        scale_options = ['linear', 'log', 'logit']
+        self.plt.canvas.ax.set_xscale(scale_options[self.ax_xscale.currentIndex()])
+        self.plt.canvas.ax.set_yscale(scale_options[self.ax_yscale.currentIndex()])
+        self.plt.canvas.draw()
+        self.plt.show()
+        self.hide()
+
+    def closeEvent(self, evnt):
+        evnt.ignore()
+        self.hide()
 
 class Configuration(QtWidgets.QDialog, config.Ui_MainWindow):
     def __init__(self, parent=None):

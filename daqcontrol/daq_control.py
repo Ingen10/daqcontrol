@@ -350,8 +350,8 @@ class Ui_mainWindow(object):
 "border:none;")
         self.switch2.setText("")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/resources/switch-on.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
         icon.addPixmap(QtGui.QPixmap(":/resources/switch-off.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(":/resources/switch-on.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
         self.switch2.setIcon(icon)
         self.switch2.setIconSize(QtCore.QSize(60, 60))
         self.switch2.setCheckable(True)
@@ -1167,9 +1167,15 @@ class Ui_mainWindow(object):
         icon2.addPixmap(QtGui.QPixmap(":/resources/CSV.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actionCSV.setIcon(icon2)
         self.actionCSV.setObjectName("actionCSV")
+        self.actionAxes = QtWidgets.QAction(mainWindow)
+        icon3 = QtGui.QIcon()
+        icon3.addPixmap(QtGui.QPixmap(":/resources/customize.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
+        self.actionAxes.setIcon(icon3)
+        self.actionAxes.setObjectName("actionAxes")
         self.toolBar.addAction(self.actionConfig)
         self.toolBar.addAction(self.actionCSV)
         self.toolBar.addSeparator()
+        self.toolBar.addAction(self.actionAxes)
 
         self.retranslateUi(mainWindow)
         self.tabWidget.setCurrentIndex(0)
@@ -1286,6 +1292,7 @@ class Ui_mainWindow(object):
         self.toolBar.setWindowTitle(_translate("mainWindow", "toolBar"))
         self.actionConfig.setText(_translate("mainWindow", "config"))
         self.actionCSV.setText(_translate("mainWindow", "CSV"))
+        self.actionAxes.setText(_translate("mainWindow", "Axes"))
 
 from .widgets import MPL_Widget
 from . import res_rc

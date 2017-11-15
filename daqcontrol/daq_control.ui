@@ -2578,6 +2578,7 @@ border:none;</string>
    <addaction name="actionConfig"/>
    <addaction name="actionCSV"/>
    <addaction name="separator"/>
+   <addaction name="actionAxes"/>
   </widget>
   <action name="actionConfig">
    <property name="icon">
@@ -2598,6 +2599,16 @@ border:none;</string>
    </property>
    <property name="text">
     <string>CSV</string>
+   </property>
+  </action>
+  <action name="actionAxes">
+   <property name="icon">
+    <iconset>
+     <normalon>:/resources/customize.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Axes</string>
    </property>
   </action>
  </widget>
