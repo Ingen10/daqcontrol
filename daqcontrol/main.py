@@ -331,12 +331,12 @@ class AxesConfiguration(QtWidgets.QDialog, axes_op.Ui_MainWindow):
         self.plt.canvas.ax.set_xlabel(self.ax_xlb.text(), fontsize=10)
         self.plt.canvas.ax.set_ylabel(self.ax_ylb.text(), fontsize=10)
         self.plt.canvas.ax.set_title(self.ax_title.text())
-        self.plt.canvas.ax.set_xlim(float(self.ax_left.text()), float(self.ax_right.text()))
-        self.plt.canvas.ax.set_ylim(float(self.ax_bottom.text()), float(self.ax_top.text()))
         scale_options = ['linear', 'log', 'logit']
         self.plt.canvas.ax.set_xscale(scale_options[self.ax_xscale.currentIndex()])
         self.plt.canvas.ax.set_yscale(scale_options[self.ax_yscale.currentIndex()])
-        self.plt.canvas.draw()
+        self.plt.canvas.ax.set_xlim(float(self.ax_left.text()), float(self.ax_right.text()))
+        self.plt.canvas.ax.set_ylim(float(self.ax_bottom.text()), float(self.ax_top.text()))
+        self.plt.canvas.draw_idle()
         self.plt.show()
         self.hide()
 
