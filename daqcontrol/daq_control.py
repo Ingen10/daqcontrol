@@ -8,6 +8,9 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+from .widgets import MPL_Widget
+
+
 class Ui_mainWindow(object):
     def setupUi(self, mainWindow):
         mainWindow.setObjectName("mainWindow")
@@ -30,7 +33,8 @@ class Ui_mainWindow(object):
         self.formLayout_5.setFieldGrowthPolicy(QtWidgets.QFormLayout.AllNonFixedFieldsGrow)
         self.formLayout_5.setObjectName("formLayout_5")
         self.label_12 = QtWidgets.QLabel(self.tab1)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed,
+                                           QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_12.sizePolicy().hasHeightForWidth())
@@ -42,9 +46,11 @@ class Ui_mainWindow(object):
         font.setWeight(75)
         self.label_12.setFont(font)
         self.label_12.setObjectName("label_12")
-        self.formLayout_5.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_12)
+        self.formLayout_5.setWidget(0, QtWidgets.QFormLayout.LabelRole,
+                                    self.label_12)
         self.label_13 = QtWidgets.QLabel(self.tab1)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed,
+                                           QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_13.sizePolicy().hasHeightForWidth())
@@ -52,9 +58,11 @@ class Ui_mainWindow(object):
         self.label_13.setMinimumSize(QtCore.QSize(80, 27))
         self.label_13.setMaximumSize(QtCore.QSize(80, 27))
         self.label_13.setObjectName("label_13")
-        self.formLayout_5.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_13)
+        self.formLayout_5.setWidget(1, QtWidgets.QFormLayout.LabelRole,
+                                    self.label_13)
         self.pos_channel = QtWidgets.QComboBox(self.tab1)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed,
+                                           QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.pos_channel.sizePolicy().hasHeightForWidth())
@@ -62,9 +70,11 @@ class Ui_mainWindow(object):
         self.pos_channel.setMinimumSize(QtCore.QSize(100, 27))
         self.pos_channel.setMaximumSize(QtCore.QSize(100, 27))
         self.pos_channel.setObjectName("pos_channel")
-        self.formLayout_5.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.pos_channel)
+        self.formLayout_5.setWidget(1, QtWidgets.QFormLayout.FieldRole,
+                                    self.pos_channel)
         self.label_14 = QtWidgets.QLabel(self.tab1)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed,
+                                           QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_14.sizePolicy().hasHeightForWidth())
@@ -72,9 +82,11 @@ class Ui_mainWindow(object):
         self.label_14.setMinimumSize(QtCore.QSize(80, 27))
         self.label_14.setMaximumSize(QtCore.QSize(80, 27))
         self.label_14.setObjectName("label_14")
-        self.formLayout_5.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.label_14)
+        self.formLayout_5.setWidget(2, QtWidgets.QFormLayout.LabelRole,
+                                    self.label_14)
         self.neg_channel = QtWidgets.QComboBox(self.tab1)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed,
+                                           QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.neg_channel.sizePolicy().hasHeightForWidth())
@@ -82,9 +94,11 @@ class Ui_mainWindow(object):
         self.neg_channel.setMinimumSize(QtCore.QSize(100, 27))
         self.neg_channel.setMaximumSize(QtCore.QSize(100, 27))
         self.neg_channel.setObjectName("neg_channel")
-        self.formLayout_5.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.neg_channel)
+        self.formLayout_5.setWidget(2, QtWidgets.QFormLayout.FieldRole,
+                                    self.neg_channel)
         self.label_15 = QtWidgets.QLabel(self.tab1)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed,
+                                           QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_15.sizePolicy().hasHeightForWidth())
@@ -92,9 +106,11 @@ class Ui_mainWindow(object):
         self.label_15.setMinimumSize(QtCore.QSize(80, 27))
         self.label_15.setMaximumSize(QtCore.QSize(80, 27))
         self.label_15.setObjectName("label_15")
-        self.formLayout_5.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.label_15)
+        self.formLayout_5.setWidget(3, QtWidgets.QFormLayout.LabelRole,
+                                    self.label_15)
         self.range = QtWidgets.QComboBox(self.tab1)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed,
+                                           QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.range.sizePolicy().hasHeightForWidth())
@@ -102,9 +118,11 @@ class Ui_mainWindow(object):
         self.range.setMinimumSize(QtCore.QSize(100, 27))
         self.range.setMaximumSize(QtCore.QSize(100, 27))
         self.range.setObjectName("range")
-        self.formLayout_5.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.range)
+        self.formLayout_5.setWidget(3, QtWidgets.QFormLayout.FieldRole,
+                                    self.range)
         self.label_16 = QtWidgets.QLabel(self.tab1)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed,
+                                           QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_16.sizePolicy().hasHeightForWidth())
@@ -112,9 +130,11 @@ class Ui_mainWindow(object):
         self.label_16.setMinimumSize(QtCore.QSize(80, 27))
         self.label_16.setMaximumSize(QtCore.QSize(80, 27))
         self.label_16.setObjectName("label_16")
-        self.formLayout_5.setWidget(4, QtWidgets.QFormLayout.LabelRole, self.label_16)
+        self.formLayout_5.setWidget(4, QtWidgets.QFormLayout.LabelRole,
+                                    self.label_16)
         self.sb_period = QtWidgets.QDoubleSpinBox(self.tab1)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed,
+                                           QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.sb_period.sizePolicy().hasHeightForWidth())
@@ -127,9 +147,11 @@ class Ui_mainWindow(object):
         self.sb_period.setSingleStep(0.01)
         self.sb_period.setProperty("value", 1.0)
         self.sb_period.setObjectName("sb_period")
-        self.formLayout_5.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.sb_period)
+        self.formLayout_5.setWidget(4, QtWidgets.QFormLayout.FieldRole,
+                                    self.sb_period)
         self.Bplay = QtWidgets.QPushButton(self.tab1)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed,
+                                           QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.Bplay.sizePolicy().hasHeightForWidth())
@@ -138,10 +160,12 @@ class Ui_mainWindow(object):
         self.Bplay.setMaximumSize(QtCore.QSize(100, 27))
         self.Bplay.setCheckable(True)
         self.Bplay.setObjectName("Bplay")
-        self.formLayout_5.setWidget(5, QtWidgets.QFormLayout.FieldRole, self.Bplay)
+        self.formLayout_5.setWidget(5, QtWidgets.QFormLayout.FieldRole,
+                                    self.Bplay)
         self.Bstop = QtWidgets.QPushButton(self.tab1)
         self.Bstop.setEnabled(False)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed,
+                                           QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.Bstop.sizePolicy().hasHeightForWidth())
@@ -149,9 +173,11 @@ class Ui_mainWindow(object):
         self.Bstop.setMinimumSize(QtCore.QSize(100, 27))
         self.Bstop.setMaximumSize(QtCore.QSize(100, 27))
         self.Bstop.setObjectName("Bstop")
-        self.formLayout_5.setWidget(6, QtWidgets.QFormLayout.FieldRole, self.Bstop)
+        self.formLayout_5.setWidget(6, QtWidgets.QFormLayout.FieldRole,
+                                    self.Bstop)
         self.label_18 = QtWidgets.QLabel(self.tab1)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed,
+                                           QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_18.sizePolicy().hasHeightForWidth())
@@ -159,9 +185,11 @@ class Ui_mainWindow(object):
         self.label_18.setMinimumSize(QtCore.QSize(110, 27))
         self.label_18.setMaximumSize(QtCore.QSize(110, 27))
         self.label_18.setObjectName("label_18")
-        self.formLayout_5.setWidget(7, QtWidgets.QFormLayout.LabelRole, self.label_18)
+        self.formLayout_5.setWidget(7, QtWidgets.QFormLayout.LabelRole,
+                                    self.label_18)
         self.last_value = QtWidgets.QLabel(self.tab1)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed,
+                                           QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.last_value.sizePolicy().hasHeightForWidth())
@@ -170,9 +198,11 @@ class Ui_mainWindow(object):
         self.last_value.setMaximumSize(QtCore.QSize(100, 27))
         self.last_value.setAlignment(QtCore.Qt.AlignCenter)
         self.last_value.setObjectName("last_value")
-        self.formLayout_5.setWidget(7, QtWidgets.QFormLayout.FieldRole, self.last_value)
+        self.formLayout_5.setWidget(7, QtWidgets.QFormLayout.FieldRole,
+                                    self.last_value)
         self.label_19 = QtWidgets.QLabel(self.tab1)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed,
+                                           QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_19.sizePolicy().hasHeightForWidth())
@@ -184,14 +214,17 @@ class Ui_mainWindow(object):
         font.setWeight(75)
         self.label_19.setFont(font)
         self.label_19.setObjectName("label_19")
-        self.formLayout_5.setWidget(8, QtWidgets.QFormLayout.LabelRole, self.label_19)
+        self.formLayout_5.setWidget(8, QtWidgets.QFormLayout.LabelRole,
+                                    self.label_19)
         self.label_20 = QtWidgets.QLabel(self.tab1)
         self.label_20.setMinimumSize(QtCore.QSize(110, 27))
         self.label_20.setMaximumSize(QtCore.QSize(110, 27))
         self.label_20.setObjectName("label_20")
-        self.formLayout_5.setWidget(9, QtWidgets.QFormLayout.LabelRole, self.label_20)
+        self.formLayout_5.setWidget(9, QtWidgets.QFormLayout.LabelRole,
+                                    self.label_20)
         self.dac_value = QtWidgets.QDoubleSpinBox(self.tab1)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed,
+                                           QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.dac_value.sizePolicy().hasHeightForWidth())
@@ -201,9 +234,11 @@ class Ui_mainWindow(object):
         self.dac_value.setDecimals(3)
         self.dac_value.setSingleStep(0.1)
         self.dac_value.setObjectName("dac_value")
-        self.formLayout_5.setWidget(9, QtWidgets.QFormLayout.FieldRole, self.dac_value)
+        self.formLayout_5.setWidget(9, QtWidgets.QFormLayout.FieldRole,
+                                    self.dac_value)
         self.Bset_voltage = QtWidgets.QPushButton(self.tab1)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed,
+                                           QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.Bset_voltage.sizePolicy().hasHeightForWidth())
@@ -211,12 +246,14 @@ class Ui_mainWindow(object):
         self.Bset_voltage.setMinimumSize(QtCore.QSize(100, 27))
         self.Bset_voltage.setMaximumSize(QtCore.QSize(100, 27))
         self.Bset_voltage.setObjectName("Bset_voltage")
-        self.formLayout_5.setWidget(10, QtWidgets.QFormLayout.FieldRole, self.Bset_voltage)
+        self.formLayout_5.setWidget(10, QtWidgets.QFormLayout.FieldRole,
+                                    self.Bset_voltage)
         self.horizontalLayout_6.addLayout(self.formLayout_5)
         self.verticalLayout_2 = QtWidgets.QVBoxLayout()
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.plotWidget = MPL_Widget(self.tab1)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding,
+                                           QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.plotWidget.sizePolicy().hasHeightForWidth())
@@ -228,10 +265,12 @@ class Ui_mainWindow(object):
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setSizeConstraint(QtWidgets.QLayout.SetMinimumSize)
         self.horizontalLayout.setObjectName("horizontalLayout")
-        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding,
+                                           QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem)
         self.cBosc = QtWidgets.QCheckBox(self.tab1)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed,
+                                           QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.cBosc.sizePolicy().hasHeightForWidth())
@@ -254,7 +293,8 @@ class Ui_mainWindow(object):
         self.verticalLayout_8 = QtWidgets.QVBoxLayout(self.tab_2)
         self.verticalLayout_8.setObjectName("verticalLayout_8")
         self.label_7 = QtWidgets.QLabel(self.tab_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed,
+                                           QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_7.sizePolicy().hasHeightForWidth())
@@ -282,7 +322,8 @@ class Ui_mainWindow(object):
         self.cbD5.addItem("")
         self.gridLayout.addWidget(self.cbD5, 4, 1, 1, 1)
         self.label_23 = QtWidgets.QLabel(self.tab_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred,
+                                           QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_23.sizePolicy().hasHeightForWidth())
@@ -294,7 +335,8 @@ class Ui_mainWindow(object):
         self.label_23.setObjectName("label_23")
         self.gridLayout.addWidget(self.label_23, 4, 0, 1, 1)
         self.cbD1 = QtWidgets.QComboBox(self.tab_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed,
+                                           QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.cbD1.sizePolicy().hasHeightForWidth())
@@ -305,7 +347,8 @@ class Ui_mainWindow(object):
         self.cbD1.addItem("")
         self.gridLayout.addWidget(self.cbD1, 0, 1, 1, 1)
         self.label_24 = QtWidgets.QLabel(self.tab_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred,
+                                           QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_24.sizePolicy().hasHeightForWidth())
@@ -317,7 +360,8 @@ class Ui_mainWindow(object):
         self.label_24.setObjectName("label_24")
         self.gridLayout.addWidget(self.label_24, 5, 0, 1, 1)
         self.Digital2 = QtWidgets.QStackedWidget(self.tab_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred,
+                                           QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.Digital2.sizePolicy().hasHeightForWidth())
@@ -347,11 +391,13 @@ class Ui_mainWindow(object):
         self.switch2 = QtWidgets.QPushButton(self.D2_out)
         self.switch2.setGeometry(QtCore.QRect(0, 0, 60, 60))
         self.switch2.setStyleSheet("background-color: none;\n"
-"border:none;")
+                                   "border:none;")
         self.switch2.setText("")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/resources/switch-off.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        icon.addPixmap(QtGui.QPixmap(":/resources/switch-on.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
+        icon.addPixmap(QtGui.QPixmap(":/resources/switch-off.png"),
+                       QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(":/resources/switch-on.png"),
+                       QtGui.QIcon.Normal, QtGui.QIcon.On)
         self.switch2.setIcon(icon)
         self.switch2.setIconSize(QtCore.QSize(60, 60))
         self.switch2.setCheckable(True)
@@ -360,7 +406,8 @@ class Ui_mainWindow(object):
         self.Digital2.addWidget(self.D2_out)
         self.gridLayout.addWidget(self.Digital2, 1, 2, 1, 1)
         self.cbD4 = QtWidgets.QComboBox(self.tab_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed,
+                                           QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.cbD4.sizePolicy().hasHeightForWidth())
@@ -371,7 +418,8 @@ class Ui_mainWindow(object):
         self.cbD4.addItem("")
         self.gridLayout.addWidget(self.cbD4, 3, 1, 1, 1)
         self.Digital4 = QtWidgets.QStackedWidget(self.tab_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred,
+                                           QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.Digital4.sizePolicy().hasHeightForWidth())
@@ -380,7 +428,8 @@ class Ui_mainWindow(object):
         self.Digital4.setMaximumSize(QtCore.QSize(120, 60))
         self.Digital4.setObjectName("Digital4")
         self.widget_4 = QtWidgets.QWidget()
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred,
+                                           QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.widget_4.sizePolicy().hasHeightForWidth())
@@ -406,7 +455,7 @@ class Ui_mainWindow(object):
         self.switch4 = QtWidgets.QPushButton(self.D4_out)
         self.switch4.setGeometry(QtCore.QRect(0, 0, 60, 60))
         self.switch4.setStyleSheet("background-color: none;\n"
-"border:none;")
+                                   "border:none;")
         self.switch4.setText("")
         self.switch4.setIcon(icon)
         self.switch4.setIconSize(QtCore.QSize(60, 60))
@@ -422,7 +471,8 @@ class Ui_mainWindow(object):
         self.cbD6.addItem("")
         self.gridLayout.addWidget(self.cbD6, 5, 1, 1, 1)
         self.label_9 = QtWidgets.QLabel(self.tab_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed,
+                                           QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_9.sizePolicy().hasHeightForWidth())
@@ -434,7 +484,8 @@ class Ui_mainWindow(object):
         self.label_9.setObjectName("label_9")
         self.gridLayout.addWidget(self.label_9, 1, 0, 1, 1)
         self.Digital5 = QtWidgets.QStackedWidget(self.tab_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred,
+                                           QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.Digital5.sizePolicy().hasHeightForWidth())
@@ -464,7 +515,7 @@ class Ui_mainWindow(object):
         self.switch5 = QtWidgets.QPushButton(self.D5_out)
         self.switch5.setGeometry(QtCore.QRect(0, 0, 60, 60))
         self.switch5.setStyleSheet("background-color: none;\n"
-"border:none;")
+                                   "border:none;")
         self.switch5.setText("")
         self.switch5.setIcon(icon)
         self.switch5.setIconSize(QtCore.QSize(60, 60))
@@ -474,7 +525,8 @@ class Ui_mainWindow(object):
         self.Digital5.addWidget(self.D5_out)
         self.gridLayout.addWidget(self.Digital5, 4, 2, 1, 1)
         self.cbD3 = QtWidgets.QComboBox(self.tab_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed,
+                                           QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.cbD3.sizePolicy().hasHeightForWidth())
@@ -485,7 +537,8 @@ class Ui_mainWindow(object):
         self.cbD3.addItem("")
         self.gridLayout.addWidget(self.cbD3, 2, 1, 1, 1)
         self.label_8 = QtWidgets.QLabel(self.tab_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed,
+                                           QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_8.sizePolicy().hasHeightForWidth())
@@ -498,7 +551,8 @@ class Ui_mainWindow(object):
         self.label_8.setObjectName("label_8")
         self.gridLayout.addWidget(self.label_8, 0, 0, 1, 1)
         self.cbD2 = QtWidgets.QComboBox(self.tab_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed,
+                                           QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.cbD2.sizePolicy().hasHeightForWidth())
@@ -509,7 +563,8 @@ class Ui_mainWindow(object):
         self.cbD2.addItem("")
         self.gridLayout.addWidget(self.cbD2, 1, 1, 1, 1)
         self.label_10 = QtWidgets.QLabel(self.tab_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred,
+                                           QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_10.sizePolicy().hasHeightForWidth())
@@ -521,7 +576,8 @@ class Ui_mainWindow(object):
         self.label_10.setObjectName("label_10")
         self.gridLayout.addWidget(self.label_10, 2, 0, 1, 1)
         self.Digital1 = QtWidgets.QStackedWidget(self.tab_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred,
+                                           QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(5)
         sizePolicy.setVerticalStretch(5)
         sizePolicy.setHeightForWidth(self.Digital1.sizePolicy().hasHeightForWidth())
@@ -530,7 +586,8 @@ class Ui_mainWindow(object):
         self.Digital1.setMaximumSize(QtCore.QSize(120, 60))
         self.Digital1.setObjectName("Digital1")
         self.widget = QtWidgets.QWidget()
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed,
+                                           QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.widget.sizePolicy().hasHeightForWidth())
@@ -556,7 +613,7 @@ class Ui_mainWindow(object):
         self.switch1 = QtWidgets.QPushButton(self.D1_out)
         self.switch1.setGeometry(QtCore.QRect(0, 0, 60, 60))
         self.switch1.setStyleSheet("background-color: none;\n"
-"border:none;")
+                                   "border:none;")
         self.switch1.setText("")
         self.switch1.setIcon(icon)
         self.switch1.setIconSize(QtCore.QSize(60, 60))
@@ -570,7 +627,8 @@ class Ui_mainWindow(object):
         self.Digital1.addWidget(self.D1_out)
         self.gridLayout.addWidget(self.Digital1, 0, 2, 1, 1)
         self.label_11 = QtWidgets.QLabel(self.tab_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred,
+                                           QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_11.sizePolicy().hasHeightForWidth())
@@ -582,7 +640,8 @@ class Ui_mainWindow(object):
         self.label_11.setObjectName("label_11")
         self.gridLayout.addWidget(self.label_11, 3, 0, 1, 1)
         self.Digital3 = QtWidgets.QStackedWidget(self.tab_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred,
+                                           QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.Digital3.sizePolicy().hasHeightForWidth())
@@ -612,7 +671,7 @@ class Ui_mainWindow(object):
         self.switch3 = QtWidgets.QPushButton(self.D3_out)
         self.switch3.setGeometry(QtCore.QRect(0, 0, 60, 60))
         self.switch3.setStyleSheet("background-color: none;\n"
-"border:none;")
+                                   "border:none;")
         self.switch3.setText("")
         self.switch3.setIcon(icon)
         self.switch3.setIconSize(QtCore.QSize(60, 60))
@@ -622,7 +681,8 @@ class Ui_mainWindow(object):
         self.Digital3.addWidget(self.D3_out)
         self.gridLayout.addWidget(self.Digital3, 2, 2, 1, 1)
         self.Digital6 = QtWidgets.QStackedWidget(self.tab_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred,
+                                           QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.Digital6.sizePolicy().hasHeightForWidth())
@@ -653,7 +713,7 @@ class Ui_mainWindow(object):
         self.switch6 = QtWidgets.QPushButton(self.D6_out)
         self.switch6.setGeometry(QtCore.QRect(0, 0, 60, 60))
         self.switch6.setStyleSheet("background-color: none;\n"
-"border:none;")
+                                   "border:none;")
         self.switch6.setText("")
         self.switch6.setIcon(icon)
         self.switch6.setIconSize(QtCore.QSize(60, 60))
@@ -663,7 +723,8 @@ class Ui_mainWindow(object):
         self.Digital6.addWidget(self.D6_out)
         self.gridLayout.addWidget(self.Digital6, 5, 2, 1, 1)
         self.horizontalLayout_7.addLayout(self.gridLayout)
-        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding,
+                                            QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_7.addItem(spacerItem1)
         self.verticalLayout_8.addLayout(self.horizontalLayout_7)
         self.tabWidget.addTab(self.tab_2, "")
@@ -679,7 +740,8 @@ class Ui_mainWindow(object):
         self.formLayout_6.setFieldGrowthPolicy(QtWidgets.QFormLayout.AllNonFixedFieldsGrow)
         self.formLayout_6.setObjectName("formLayout_6")
         self.label = QtWidgets.QLabel(self.layoutWidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed,
+                                           QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label.sizePolicy().hasHeightForWidth())
@@ -690,9 +752,11 @@ class Ui_mainWindow(object):
         font.setWeight(75)
         self.label.setFont(font)
         self.label.setObjectName("label")
-        self.formLayout_6.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label)
+        self.formLayout_6.setWidget(0, QtWidgets.QFormLayout.LabelRole,
+                                    self.label)
         self.cb = QtWidgets.QComboBox(self.layoutWidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed,
+                                           QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.cb.sizePolicy().hasHeightForWidth())
@@ -703,7 +767,8 @@ class Ui_mainWindow(object):
         self.cb.addItem("")
         self.cb.addItem("")
         self.cb.addItem("")
-        self.formLayout_6.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.cb)
+        self.formLayout_6.setWidget(0, QtWidgets.QFormLayout.FieldRole,
+                                    self.cb)
         self.verticalLayout_4.addLayout(self.formLayout_6)
         self.sW = QtWidgets.QStackedWidget(self.layoutWidget)
         self.sW.setMinimumSize(QtCore.QSize(280, 200))
@@ -718,7 +783,8 @@ class Ui_mainWindow(object):
         self.verticalLayout_7 = QtWidgets.QVBoxLayout()
         self.verticalLayout_7.setObjectName("verticalLayout_7")
         self.label_35 = QtWidgets.QLabel(self.page)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum,
+                                           QtWidgets.QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_35.sizePolicy().hasHeightForWidth())
@@ -736,7 +802,8 @@ class Ui_mainWindow(object):
         self.formLayout_3.setFieldGrowthPolicy(QtWidgets.QFormLayout.AllNonFixedFieldsGrow)
         self.formLayout_3.setObjectName("formLayout_3")
         self.label_25 = QtWidgets.QLabel(self.page)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed,
+                                           QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_25.sizePolicy().hasHeightForWidth())
@@ -747,9 +814,11 @@ class Ui_mainWindow(object):
         font.setWeight(50)
         self.label_25.setFont(font)
         self.label_25.setObjectName("label_25")
-        self.formLayout_3.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_25)
+        self.formLayout_3.setWidget(0, QtWidgets.QFormLayout.LabelRole,
+                                    self.label_25)
         self.label_3 = QtWidgets.QLabel(self.page)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed,
+                                           QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_3.sizePolicy().hasHeightForWidth())
@@ -760,9 +829,11 @@ class Ui_mainWindow(object):
         font.setWeight(50)
         self.label_3.setFont(font)
         self.label_3.setObjectName("label_3")
-        self.formLayout_3.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_3)
+        self.formLayout_3.setWidget(1, QtWidgets.QFormLayout.LabelRole,
+                                    self.label_3)
         self.label_4 = QtWidgets.QLabel(self.page)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed,
+                                           QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_4.sizePolicy().hasHeightForWidth())
@@ -773,9 +844,11 @@ class Ui_mainWindow(object):
         font.setWeight(50)
         self.label_4.setFont(font)
         self.label_4.setObjectName("label_4")
-        self.formLayout_3.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.label_4)
+        self.formLayout_3.setWidget(2, QtWidgets.QFormLayout.LabelRole,
+                                    self.label_4)
         self.Bstart_encoder = QtWidgets.QPushButton(self.page)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed,
+                                           QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.Bstart_encoder.sizePolicy().hasHeightForWidth())
@@ -784,10 +857,12 @@ class Ui_mainWindow(object):
         self.Bstart_encoder.setStyleSheet("")
         self.Bstart_encoder.setCheckable(True)
         self.Bstart_encoder.setObjectName("Bstart_encoder")
-        self.formLayout_3.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.Bstart_encoder)
+        self.formLayout_3.setWidget(3, QtWidgets.QFormLayout.FieldRole,
+                                    self.Bstart_encoder)
         self.Bstop_encoder = QtWidgets.QPushButton(self.page)
         self.Bstop_encoder.setEnabled(False)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed,
+                                           QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.Bstop_encoder.sizePolicy().hasHeightForWidth())
@@ -796,9 +871,11 @@ class Ui_mainWindow(object):
         self.Bstop_encoder.setCheckable(True)
         self.Bstop_encoder.setChecked(True)
         self.Bstop_encoder.setObjectName("Bstop_encoder")
-        self.formLayout_3.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.Bstop_encoder)
+        self.formLayout_3.setWidget(4, QtWidgets.QFormLayout.FieldRole,
+                                    self.Bstop_encoder)
         self.mode_encoder = QtWidgets.QComboBox(self.page)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed,
+                                           QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.mode_encoder.sizePolicy().hasHeightForWidth())
@@ -807,9 +884,11 @@ class Ui_mainWindow(object):
         self.mode_encoder.setObjectName("mode_encoder")
         self.mode_encoder.addItem("")
         self.mode_encoder.addItem("")
-        self.formLayout_3.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.mode_encoder)
+        self.formLayout_3.setWidget(1, QtWidgets.QFormLayout.FieldRole,
+                                    self.mode_encoder)
         self.result_encoder = QtWidgets.QLabel(self.page)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed,
+                                           QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.result_encoder.sizePolicy().hasHeightForWidth())
@@ -820,9 +899,11 @@ class Ui_mainWindow(object):
         self.result_encoder.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.result_encoder.setText("")
         self.result_encoder.setObjectName("result_encoder")
-        self.formLayout_3.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.result_encoder)
+        self.formLayout_3.setWidget(0, QtWidgets.QFormLayout.FieldRole,
+                                    self.result_encoder)
         self.resolution_encoder = QtWidgets.QSpinBox(self.page)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed,
+                                           QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.resolution_encoder.sizePolicy().hasHeightForWidth())
@@ -831,7 +912,8 @@ class Ui_mainWindow(object):
         self.resolution_encoder.setMaximum(65535)
         self.resolution_encoder.setSingleStep(1)
         self.resolution_encoder.setObjectName("resolution_encoder")
-        self.formLayout_3.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.resolution_encoder)
+        self.formLayout_3.setWidget(2, QtWidgets.QFormLayout.FieldRole,
+                                    self.resolution_encoder)
         self.verticalLayout_7.addLayout(self.formLayout_3)
         self.horizontalLayout_3.addLayout(self.verticalLayout_7)
         self.sW.addWidget(self.page)
@@ -845,7 +927,8 @@ class Ui_mainWindow(object):
         self.verticalLayout_3.setSpacing(3)
         self.verticalLayout_3.setObjectName("verticalLayout_3")
         self.label_32 = QtWidgets.QLabel(self.page_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum,
+                                           QtWidgets.QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_32.sizePolicy().hasHeightForWidth())
@@ -863,7 +946,8 @@ class Ui_mainWindow(object):
         self.formLayout_4.setFieldGrowthPolicy(QtWidgets.QFormLayout.AllNonFixedFieldsGrow)
         self.formLayout_4.setObjectName("formLayout_4")
         self.label_26 = QtWidgets.QLabel(self.page_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed,
+                                           QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_26.sizePolicy().hasHeightForWidth())
@@ -876,7 +960,8 @@ class Ui_mainWindow(object):
         self.label_26.setObjectName("label_26")
         self.formLayout_4.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_26)
         self.lEPeriod = QtWidgets.QLabel(self.page_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed,
+                                           QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.lEPeriod.sizePolicy().hasHeightForWidth())
@@ -888,7 +973,8 @@ class Ui_mainWindow(object):
         self.lEPeriod.setObjectName("lEPeriod")
         self.formLayout_4.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.lEPeriod)
         self.label_31 = QtWidgets.QLabel(self.page_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed,
+                                           QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_31.sizePolicy().hasHeightForWidth())
@@ -901,7 +987,8 @@ class Ui_mainWindow(object):
         self.label_31.setObjectName("label_31")
         self.formLayout_4.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.label_31)
         self.label_2 = QtWidgets.QLabel(self.page_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed,
+                                           QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_2.sizePolicy().hasHeightForWidth())
@@ -912,9 +999,11 @@ class Ui_mainWindow(object):
         font.setWeight(50)
         self.label_2.setFont(font)
         self.label_2.setObjectName("label_2")
-        self.formLayout_4.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.label_2)
+        self.formLayout_4.setWidget(3, QtWidgets.QFormLayout.LabelRole,
+                                    self.label_2)
         self.cbTime = QtWidgets.QComboBox(self.page_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed,
+                                           QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.cbTime.sizePolicy().hasHeightForWidth())
@@ -924,9 +1013,11 @@ class Ui_mainWindow(object):
         self.cbTime.addItem("")
         self.cbTime.addItem("")
         self.cbTime.addItem("")
-        self.formLayout_4.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.cbTime)
+        self.formLayout_4.setWidget(3, QtWidgets.QFormLayout.FieldRole,
+                                    self.cbTime)
         self.Bstart_capture = QtWidgets.QPushButton(self.page_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed,
+                                           QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.Bstart_capture.sizePolicy().hasHeightForWidth())
@@ -937,10 +1028,12 @@ class Ui_mainWindow(object):
         self.Bstart_capture.setAutoExclusive(False)
         self.Bstart_capture.setAutoDefault(False)
         self.Bstart_capture.setObjectName("Bstart_capture")
-        self.formLayout_4.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.Bstart_capture)
+        self.formLayout_4.setWidget(4, QtWidgets.QFormLayout.FieldRole,
+                                    self.Bstart_capture)
         self.Bstop_capture = QtWidgets.QPushButton(self.page_2)
         self.Bstop_capture.setEnabled(False)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed,
+                                           QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.Bstop_capture.sizePolicy().hasHeightForWidth())
@@ -949,12 +1042,15 @@ class Ui_mainWindow(object):
         self.Bstop_capture.setCheckable(True)
         self.Bstop_capture.setChecked(True)
         self.Bstop_capture.setObjectName("Bstop_capture")
-        self.formLayout_4.setWidget(5, QtWidgets.QFormLayout.FieldRole, self.Bstop_capture)
+        self.formLayout_4.setWidget(5, QtWidgets.QFormLayout.FieldRole,
+                                    self.Bstop_capture)
         self.label_36 = QtWidgets.QLabel(self.page_2)
         self.label_36.setObjectName("label_36")
-        self.formLayout_4.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_36)
+        self.formLayout_4.setWidget(1, QtWidgets.QFormLayout.LabelRole,
+                                    self.label_36)
         self.lEHz = QtWidgets.QLabel(self.page_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed,
+                                           QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.lEHz.sizePolicy().hasHeightForWidth())
@@ -964,9 +1060,11 @@ class Ui_mainWindow(object):
         self.lEHz.setText("")
         self.lEHz.setTextInteractionFlags(QtCore.Qt.LinksAccessibleByMouse)
         self.lEHz.setObjectName("lEHz")
-        self.formLayout_4.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.lEHz)
+        self.formLayout_4.setWidget(1, QtWidgets.QFormLayout.FieldRole,
+                                    self.lEHz)
         self.reference_period = QtWidgets.QDoubleSpinBox(self.page_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed,
+                                           QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.reference_period.sizePolicy().hasHeightForWidth())
@@ -976,7 +1074,8 @@ class Ui_mainWindow(object):
         self.reference_period.setMaximum(9999.0)
         self.reference_period.setProperty("value", 2.0)
         self.reference_period.setObjectName("reference_period")
-        self.formLayout_4.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.reference_period)
+        self.formLayout_4.setWidget(2, QtWidgets.QFormLayout.FieldRole,
+                                    self.reference_period)
         self.verticalLayout_3.addLayout(self.formLayout_4)
         self.horizontalLayout_2.addLayout(self.verticalLayout_3)
         self.sW.addWidget(self.page_2)
@@ -988,7 +1087,8 @@ class Ui_mainWindow(object):
         self.verticalLayout_5 = QtWidgets.QVBoxLayout()
         self.verticalLayout_5.setObjectName("verticalLayout_5")
         self.label_33 = QtWidgets.QLabel(self.page_3)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum,
+                                           QtWidgets.QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_33.sizePolicy().hasHeightForWidth())
@@ -1005,7 +1105,8 @@ class Ui_mainWindow(object):
         self.formLayout_2 = QtWidgets.QFormLayout()
         self.formLayout_2.setObjectName("formLayout_2")
         self.label_27 = QtWidgets.QLabel(self.page_3)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed,
+                                           QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_27.sizePolicy().hasHeightForWidth())
@@ -1016,9 +1117,11 @@ class Ui_mainWindow(object):
         font.setWeight(50)
         self.label_27.setFont(font)
         self.label_27.setObjectName("label_27")
-        self.formLayout_2.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_27)
+        self.formLayout_2.setWidget(0, QtWidgets.QFormLayout.LabelRole,
+                                    self.label_27)
         self.Bstart_counter = QtWidgets.QPushButton(self.page_3)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed,
+                                           QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.Bstart_counter.sizePolicy().hasHeightForWidth())
@@ -1026,10 +1129,12 @@ class Ui_mainWindow(object):
         self.Bstart_counter.setMinimumSize(QtCore.QSize(120, 27))
         self.Bstart_counter.setCheckable(True)
         self.Bstart_counter.setObjectName("Bstart_counter")
-        self.formLayout_2.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.Bstart_counter)
+        self.formLayout_2.setWidget(1, QtWidgets.QFormLayout.FieldRole,
+                                    self.Bstart_counter)
         self.Bstop_counter = QtWidgets.QPushButton(self.page_3)
         self.Bstop_counter.setEnabled(False)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed,
+                                           QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.Bstop_counter.sizePolicy().hasHeightForWidth())
@@ -1038,9 +1143,11 @@ class Ui_mainWindow(object):
         self.Bstop_counter.setCheckable(True)
         self.Bstop_counter.setChecked(True)
         self.Bstop_counter.setObjectName("Bstop_counter")
-        self.formLayout_2.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.Bstop_counter)
+        self.formLayout_2.setWidget(2, QtWidgets.QFormLayout.FieldRole,
+                                    self.Bstop_counter)
         self.counter_result = QtWidgets.QLabel(self.page_3)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed,
+                                           QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.counter_result.sizePolicy().hasHeightForWidth())
@@ -1050,7 +1157,8 @@ class Ui_mainWindow(object):
         self.counter_result.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.counter_result.setText("")
         self.counter_result.setObjectName("counter_result")
-        self.formLayout_2.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.counter_result)
+        self.formLayout_2.setWidget(0, QtWidgets.QFormLayout.FieldRole,
+                                    self.counter_result)
         self.verticalLayout_5.addLayout(self.formLayout_2)
         self.horizontalLayout_4.addLayout(self.verticalLayout_5)
         self.sW.addWidget(self.page_3)
@@ -1062,7 +1170,8 @@ class Ui_mainWindow(object):
         self.verticalLayout_6 = QtWidgets.QVBoxLayout()
         self.verticalLayout_6.setObjectName("verticalLayout_6")
         self.label_34 = QtWidgets.QLabel(self.page_4)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum,
+                                           QtWidgets.QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_34.sizePolicy().hasHeightForWidth())
@@ -1080,16 +1189,19 @@ class Ui_mainWindow(object):
         self.formLayout.setFieldGrowthPolicy(QtWidgets.QFormLayout.AllNonFixedFieldsGrow)
         self.formLayout.setObjectName("formLayout")
         self.label_5 = QtWidgets.QLabel(self.page_4)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed,
+                                           QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_5.sizePolicy().hasHeightForWidth())
         self.label_5.setSizePolicy(sizePolicy)
         self.label_5.setMinimumSize(QtCore.QSize(100, 27))
         self.label_5.setObjectName("label_5")
-        self.formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_5)
+        self.formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole,
+                                  self.label_5)
         self.periodPWM = QtWidgets.QSpinBox(self.page_4)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed,
+                                           QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.periodPWM.sizePolicy().hasHeightForWidth())
@@ -1097,9 +1209,11 @@ class Ui_mainWindow(object):
         self.periodPWM.setMinimumSize(QtCore.QSize(120, 27))
         self.periodPWM.setMaximum(65535)
         self.periodPWM.setObjectName("periodPWM")
-        self.formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.periodPWM)
+        self.formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole,
+                                  self.periodPWM)
         self.label_6 = QtWidgets.QLabel(self.page_4)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed,
+                                           QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_6.sizePolicy().hasHeightForWidth())
@@ -1110,9 +1224,11 @@ class Ui_mainWindow(object):
         font.setWeight(50)
         self.label_6.setFont(font)
         self.label_6.setObjectName("label_6")
-        self.formLayout.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_6)
+        self.formLayout.setWidget(1, QtWidgets.QFormLayout.LabelRole,
+                                  self.label_6)
         self.dutyPWM = QtWidgets.QSpinBox(self.page_4)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed,
+                                           QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.dutyPWM.sizePolicy().hasHeightForWidth())
@@ -1121,9 +1237,11 @@ class Ui_mainWindow(object):
         self.dutyPWM.setMaximum(100)
         self.dutyPWM.setProperty("value", 50)
         self.dutyPWM.setObjectName("dutyPWM")
-        self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.dutyPWM)
+        self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole,
+                                  self.dutyPWM)
         self.Bset_pwm = QtWidgets.QPushButton(self.page_4)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed,
+                                           QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.Bset_pwm.sizePolicy().hasHeightForWidth())
@@ -1131,17 +1249,20 @@ class Ui_mainWindow(object):
         self.Bset_pwm.setMinimumSize(QtCore.QSize(120, 27))
         self.Bset_pwm.setCheckable(True)
         self.Bset_pwm.setObjectName("Bset_pwm")
-        self.formLayout.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.Bset_pwm)
+        self.formLayout.setWidget(2, QtWidgets.QFormLayout.FieldRole,
+                                  self.Bset_pwm)
         self.Bstop_pwm = QtWidgets.QPushButton(self.page_4)
         self.Bstop_pwm.setEnabled(False)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed,
+                                           QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.Bstop_pwm.sizePolicy().hasHeightForWidth())
         self.Bstop_pwm.setSizePolicy(sizePolicy)
         self.Bstop_pwm.setMinimumSize(QtCore.QSize(120, 27))
         self.Bstop_pwm.setObjectName("Bstop_pwm")
-        self.formLayout.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.Bstop_pwm)
+        self.formLayout.setWidget(3, QtWidgets.QFormLayout.FieldRole,
+                                  self.Bstop_pwm)
         self.verticalLayout_6.addLayout(self.formLayout)
         self.horizontalLayout_5.addLayout(self.verticalLayout_6)
         self.sW.addWidget(self.page_4)
@@ -1158,18 +1279,21 @@ class Ui_mainWindow(object):
         mainWindow.addToolBar(QtCore.Qt.TopToolBarArea, self.toolBar)
         self.actionConfig = QtWidgets.QAction(mainWindow)
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap(":/resources/config.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap(":/resources/config.png"),
+                        QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actionConfig.setIcon(icon1)
         self.actionConfig.setIconVisibleInMenu(True)
         self.actionConfig.setObjectName("actionConfig")
         self.actionCSV = QtWidgets.QAction(mainWindow)
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap(":/resources/CSV.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon2.addPixmap(QtGui.QPixmap(":/resources/CSV.png"),
+                        QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actionCSV.setIcon(icon2)
         self.actionCSV.setObjectName("actionCSV")
         self.actionAxes = QtWidgets.QAction(mainWindow)
         icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap(":/resources/customize.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
+        icon3.addPixmap(QtGui.QPixmap(":/resources/customize.png"),
+                        QtGui.QIcon.Normal, QtGui.QIcon.On)
         self.actionAxes.setIcon(icon3)
         self.actionAxes.setObjectName("actionAxes")
         self.toolBar.addAction(self.actionConfig)
@@ -1235,7 +1359,8 @@ class Ui_mainWindow(object):
         self.label_20.setText(_translate("mainWindow", "DAC Value (V)"))
         self.Bset_voltage.setText(_translate("mainWindow", "Set Voltage"))
         self.cBosc.setText(_translate("mainWindow", "Oscilloscope mode"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab1), _translate("mainWindow", "Analog I / O"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab1), _translate("mainWindow",
+                                                                                "Analog I / O"))
         self.label_7.setText(_translate("mainWindow", "Select Input or Output"))
         self.cbD5.setItemText(0, _translate("mainWindow", "Input"))
         self.cbD5.setItemText(1, _translate("mainWindow", "Output"))
@@ -1255,7 +1380,8 @@ class Ui_mainWindow(object):
         self.cbD2.setItemText(1, _translate("mainWindow", "Output"))
         self.label_10.setText(_translate("mainWindow", "D3"))
         self.label_11.setText(_translate("mainWindow", "D4"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("mainWindow", "Digital I / O"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("mainWindow",
+                                                                                 "Digital I / O"))
         self.label.setText(_translate("mainWindow", "Select Mode:"))
         self.cb.setItemText(0, _translate("mainWindow", "Encoder"))
         self.cb.setItemText(1, _translate("mainWindow", "Capture"))
@@ -1294,8 +1420,6 @@ class Ui_mainWindow(object):
         self.actionCSV.setText(_translate("mainWindow", "CSV"))
         self.actionAxes.setText(_translate("mainWindow", "Axes"))
 
-from .widgets import MPL_Widget
-from . import res_rc
 
 if __name__ == "__main__":
     import sys
@@ -1305,4 +1429,3 @@ if __name__ == "__main__":
     ui.setupUi(mainWindow)
     mainWindow.show()
     sys.exit(app.exec_())
-

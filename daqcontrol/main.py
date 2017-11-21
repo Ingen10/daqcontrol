@@ -12,7 +12,7 @@ import time
 import serial
 from serial import SerialException
 from PyQt5 import QtCore, QtWidgets
-from PyQt5.QtGui import QPalette, QIcon
+from PyQt5.QtGui import QIcon
 from opendaq import DAQ
 from opendaq.models import DAQModel
 from opendaq.common import LengthError
@@ -66,7 +66,8 @@ class MyApp(QtWidgets.QMainWindow, daq_control.Ui_mainWindow):
         nav = NavigationToolbar(self.plotWidget.canvas, self.plotWidget.canvas)
         nav.setVisible(False)
         try:
-            self.statusBar.showMessage("Hardware Version: %s   Firmware Version: %s" % (self.daq.hw_ver[1], self.daq.fw_ver))
+            self.statusBar.showMessage("Hardware Version: %s   Firmware Version: %s" % (self.daq.hw_ver[1],
+                                                                                        self.daq.fw_ver))
         except AttributeError:
             pass
         icons = [":/resources/house.png", ":/resources/pan.png", ":/resources/zoom.png",
@@ -116,7 +117,7 @@ class MyApp(QtWidgets.QMainWindow, daq_control.Ui_mainWindow):
         for action in self.toolBar.actions():
             if action.text() in actions_names:
                 action.setEnabled(True)
-        self.daq.stop()    
+        self.daq.stop()
 
     def tim_counter_change(self, tim_counter_index):
         if tim_counter_index == 0 and self.Bstart_encoder.isChecked():
@@ -218,17 +219,17 @@ class MyApp(QtWidgets.QMainWindow, daq_control.Ui_mainWindow):
     def get_port(self):
         dlg = Configuration(self)
         if dlg.exec_() != '':
-            port_opendaq = dlg.return_port() 
+            port_opendaq = dlg.return_port()
         try:
-        	self.daq = DAQ(str(port_opendaq))
+            self.daq = DAQ(str(port_opendaq))
         except (LengthError, SerialException):
-        	port_opendaq = ''
+            port_opendaq = ''
         self.tabWidget.setEnabled(bool(port_opendaq))
         if port_opendaq:
-        	self.cfg.setValue('port', port_opendaq)
-        	self.statusBar.showMessage("Hardware Version: %s   Firmware Version: %s" % (self.daq.hw_ver[1],
+            self.cfg.setValue('port', port_opendaq)
+            self.statusBar.showMessage("Hardware Version: %s   Firmware Version: %s" % (self.daq.hw_ver[1],
                                                                                         self.daq.fw_ver))
-        	self.get_cb_values()
+            self.get_cb_values()
 
     def start_counter(self):
         self.daq.init_counter(0)
@@ -257,12 +258,6 @@ class MyApp(QtWidgets.QMainWindow, daq_control.Ui_mainWindow):
 
     def stop_capture(self):
         self.daq.stop_capture()
-        '''
-        modo = self.cbTime.currentIndex()
-        result = self.daq.get_capture(modo)[1]
-        self.lEPeriod.setText(str((result / 1000.0)))
-        self.lEHz.setText(str(round(((1000000.0 / result) if result else 0), 3)))
-        '''
 
     def stop_pwm(self):
         self.daq.stop_capture()
@@ -315,7 +310,6 @@ class AxesConfiguration(QtWidgets.QDialog, axes_op.Ui_MainWindow):
         self.configure_widgets()
         self.ax_Bok.clicked.connect(self.config_axes)
 
-
     def configure_widgets(self):
         x_limits = self.plt.canvas.ax.get_xlim()
         self.ax_left.setText(str(x_limits[0]))
@@ -323,7 +317,6 @@ class AxesConfiguration(QtWidgets.QDialog, axes_op.Ui_MainWindow):
         y_limits = self.plt.canvas.ax.get_ylim()
         self.ax_bottom.setText(str(y_limits[0]))
         self.ax_top.setText(str(y_limits[1]))
-
 
     def config_axes(self):
         self.plt.canvas.ax.set_autoscaley_on(False)
@@ -343,6 +336,7 @@ class AxesConfiguration(QtWidgets.QDialog, axes_op.Ui_MainWindow):
     def closeEvent(self, evnt):
         evnt.ignore()
         self.hide()
+
 
 class Configuration(QtWidgets.QDialog, config.Ui_MainWindow):
     def __init__(self, parent=None):
