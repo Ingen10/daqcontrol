@@ -9,6 +9,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 from .widgets import MPL_Widget
+from . import res_rc
 
 
 class Ui_mainWindow(object):
