@@ -54,6 +54,7 @@ class MyApp(QtWidgets.QMainWindow, daq_control.Ui_mainWindow):
         self.names = ['AGND', 'A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'VREF']
         self.stop = 0
         self.cfg = QtCore.QSettings('opendaq')
+        self.model = ''
         port_opendaq = str(self.cfg.value('port'))
         try:
             self.daq = DAQ(port_opendaq)
@@ -61,6 +62,7 @@ class MyApp(QtWidgets.QMainWindow, daq_control.Ui_mainWindow):
             port_opendaq = ''
         self.tabWidget.setEnabled(bool(port_opendaq))
         if port_opendaq:
+            self.model = DAQModel.new(*self.daq.get_info())
             self.get_cb_values()
         #  Toolbar
         nav = NavigationToolbar(self.plotWidget.canvas, self.plotWidget.canvas)
@@ -104,9 +106,30 @@ class MyApp(QtWidgets.QMainWindow, daq_control.Ui_mainWindow):
         self.tabWidget.currentChanged.connect(lambda: self.page_change(self.page))
         self.cb.currentIndexChanged.connect(lambda: self.tim_counter_change(self.tim_counter_index))
         self.mode_encoder.currentIndexChanged.connect(self.status_resolution)
+        for w in [self.pos_channel, self.range]:
+            w.currentIndexChanged.connect(self.cbchange)
+        for index, action in enumerate(self.toolBar.actions()):
+            action.triggered.connect(lambda checked, index=index: self.action(index))
+
+    def action(self, index):
+        if index == 4:
+            self.plotWidget.canvas.ax.autoscale(True)
 
     def set_dac(self):
         self.daq.set_analog(self.dac_value.value())
+
+    def cbchange(self):
+        pinput = int(self.pos_channel.currentText()[1:])
+        self.neg_channel.clear()
+        ninputs = []
+        for ninput in self.model.adc.ninputs:
+            try:
+                self.model.check_adc_settings(pinput, ninput, self.range.currentIndex())
+                ninputs.append(ninput)
+            except ValueError:
+                pass
+        for ninput in ninputs:
+            self.neg_channel.addItem(self.names[ninput if ninput < 9 else 9])
 
     def change_axes(self):
         self.dlg_axes.show()
@@ -200,22 +223,27 @@ class MyApp(QtWidgets.QMainWindow, daq_control.Ui_mainWindow):
         self.plotWidget.canvas.draw()
 
     def get_cb_values(self):
-
-        model = DAQModel.new(*self.daq.get_info())
-        for ninput in model.adc.ninputs:
-            if ninput < 9:
-                self.neg_channel.addItem(self.names[ninput])
-            else:
-                self.neg_channel.addItem(self.names[9])
-        for pinput in model.adc.pinputs:
+        for pinput in self.model.adc.pinputs:
             if pinput < 9:
                 self.pos_channel.addItem(self.names[pinput])
             else:
                 self.pos_channel.addItem(self.names[9])
-        for gain in model.adc.pga_gains:
+
+        for gain in self.model.adc.pga_gains:
             self.range.addItem('x%s' % str(gain))
-        self.dac_value.setMinimum(model.dac.vmin)
-        self.dac_value.setMaximum(model.dac.vmax)
+
+        ninputs = []
+        for ninput in self.model.adc.ninputs:
+            try:
+                self.model.check_adc_settings(self.model.adc.pinputs[0], ninput, self.model.adc.pga_gains[0])
+                ninputs.append(ninput)
+            except ValueError:
+                pass
+        for ninput in ninputs:
+            self.neg_channel.addItem(self.names[ninput if ninput < 9 else 9])
+
+        self.dac_value.setMinimum(self.model.dac.vmin)
+        self.dac_value.setMaximum(self.model.dac.vmax)
 
     def get_port(self):
         dlg = Configuration(self)
@@ -232,6 +260,7 @@ class MyApp(QtWidgets.QMainWindow, daq_control.Ui_mainWindow):
             self.cfg.setValue('port', port_opendaq)
             self.statusBar.showMessage("Hardware Version: %s   Firmware Version: %s" % (self.daq.hw_ver[1],
                                                                                         self.daq.fw_ver))
+            self.model = DAQModel.new(*self.daq.get_info())
             self.get_cb_values()
 
     def start_counter(self):
