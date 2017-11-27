@@ -1,7 +1,7 @@
-# daqcontrol
+# DAQControl
 
 DAQControl is a test software application intended for demonstrating the command-response operation of openDAQ.
-This demo is compatible with Python 2.7 and 3.X.
+This demo is compatible with Python 3.X.
 * * *
 **OpenDAQ** is an open source data acquisition instrument, which provides user
 several physical interaction capabilities such as analog inputs and outputs,
@@ -20,16 +20,20 @@ For support, e-mail to support@open-daq.com
 You will need **administrator rights** (root access) to install this package
 system-wide.
 
+DAQControl demo will require to install **matplotlib** and **PyQt5** packages. To install them:
+
+```sh
+    $ pip3 install matplotlib
+    $ pip3 install pyqt5
+```
+
+**DAQControl**
+
 To install the last stable version:
 
-**Python 3**
 
 ```sh
     $ pip3 install daqcontrol
-```
-**Python 2.7**
-```sh
-    $ pip install daqcontrol
 ```
 
 To install the development version (it is highly recommended to use a
@@ -41,7 +45,7 @@ To install the development version (it is highly recommended to use a
     $ python setup.py install
 ```
 
-In any case, if for any reason the setup fails, daqcontrol demo will require the following packages:
+In any case, if for any reason the setup fails, DAQControl demo will require these **others packages**:
 
 - opendaq
 
@@ -49,20 +53,10 @@ In any case, if for any reason the setup fails, daqcontrol demo will require the
 
 - numpy
 
-- matplotlib
-
 - serial
-
-- PyQt5
 
 All these packages are available on pip. To install them:
 
-**Python 3**
-
 ```sh
     $ pip3 install "package"
-```
-**Python 2.7**
-```sh
-    $ pip install "package"
 ```

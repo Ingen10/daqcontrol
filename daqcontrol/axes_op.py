@@ -1,13 +1,12 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'easydaq/axes_op.ui'
+# Form implementation generated from reading ui file 'daqcontrol/axes_op.ui'
 #
 # Created by: PyQt5 UI code generator 5.9
 #
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -101,13 +100,11 @@ class Ui_MainWindow(object):
         self.ax_yscale.addItem("")
         self.formLayout_3.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.ax_yscale)
         self.verticalLayout.addLayout(self.formLayout_3)
-        spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum,
-                                           QtWidgets.QSizePolicy.Expanding)
+        spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.verticalLayout.addItem(spacerItem)
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
-        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding,
-                                            QtWidgets.QSizePolicy.Minimum)
+        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem1)
         self.ax_Bok = QtWidgets.QPushButton(MainWindow)
         self.ax_Bok.setMinimumSize(QtCore.QSize(100, 27))
@@ -148,3 +145,4 @@ if __name__ == "__main__":
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
+

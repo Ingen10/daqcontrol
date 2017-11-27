@@ -181,8 +181,8 @@ class MyApp(QtWidgets.QMainWindow, daq_control.Ui_mainWindow):
         if self.Bplay.isChecked() and not(self.stop):
             self.plot()
             timer = QtCore.QTimer()
-            timer.timeout.connect(self.update)
-            timer.start(self.period)
+            #timer.timeout.connect(self.update)
+            #timer.start(self.period)
             QtCore.QTimer.singleShot(self.period*1000, self.update)
 
     def plot(self):
@@ -200,6 +200,7 @@ class MyApp(QtWidgets.QMainWindow, daq_control.Ui_mainWindow):
         self.plotWidget.canvas.draw()
 
     def get_cb_values(self):
+
         model = DAQModel.new(*self.daq.get_info())
         for ninput in model.adc.ninputs:
             if ninput < 9:
@@ -225,6 +226,8 @@ class MyApp(QtWidgets.QMainWindow, daq_control.Ui_mainWindow):
         except (LengthError, SerialException):
             port_opendaq = ''
         self.tabWidget.setEnabled(bool(port_opendaq))
+        for w in [self.neg_channel, self.pos_channel, self.range]:
+            w.clear()
         if port_opendaq:
             self.cfg.setValue('port', port_opendaq)
             self.statusBar.showMessage("Hardware Version: %s   Firmware Version: %s" % (self.daq.hw_ver[1],
