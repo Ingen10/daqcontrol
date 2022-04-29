@@ -39,7 +39,7 @@ To install the development version (it is highly recommended to use a
 [virtual environment](https://virtualenv.pypa.io/en/stable/) for this):
 
 ```sh
-git clone git@github.com:openDAQ/daqcontrol.git
+git clone https://github.com/openDAQ/daqcontrol.git
 cd daqcontrol
 python setup.py install
 ```
