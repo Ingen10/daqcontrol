@@ -14,32 +14,14 @@ Several demos and examples are provided in website's support page.
 
 Please, go to http://www.open-daq.com for additional info.
 For support, e-mail to support@open-daq.com
-* * *
+
 ## Installation
 
-You will need **administrator rights** (root access) to install this package
-system-wide.
-
-DAQControl demo will require to install **matplotlib** and **PyQt5** packages. To install them:
+It is highly recommended to install this package in a virtual Python environment using
+[virtualenv](https://virtualenv.pypa.io/en/stable/) or a similar tool.
 
 ```sh
+git clone https://github.com/openDAQ/daqcontrol.git && cd daqcontrol
 pip3 install matplotlib==2.2.5 pyqt5
-```
-
-**DAQControl**
-
-To install the last stable version:
-
-
-```sh
-pip3 install daqcontrol
-```
-
-To install the development version (it is highly recommended to use a
-[virtual environment](https://virtualenv.pypa.io/en/stable/) for this):
-
-```sh
-git clone https://github.com/openDAQ/daqcontrol.git
-cd daqcontrol
 python setup.py install
 ```
