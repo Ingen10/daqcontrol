@@ -23,8 +23,7 @@ system-wide.
 DAQControl demo will require to install **matplotlib** and **PyQt5** packages. To install them:
 
 ```sh
-    $ pip3 install matplotlib==2.2.5
-    $ pip3 install pyqt5
+pip3 install matplotlib==2.2.5 pyqt5
 ```
 
 **DAQControl**
@@ -33,30 +32,14 @@ To install the last stable version:
 
 
 ```sh
-    $ pip3 install daqcontrol
+pip3 install daqcontrol
 ```
 
 To install the development version (it is highly recommended to use a
 [virtual environment](https://virtualenv.pypa.io/en/stable/) for this):
 
 ```sh
-    $ git clone github.com/opendaq/daqcontrol
-    $ cd daqcontrol
-    $ python setup.py install
-```
-
-In any case, if for any reason the setup fails, DAQControl demo will require these **others packages**:
-
-- opendaq
-
-- setuptools
-
-- numpy
-
-- serial
-
-All these packages are available on pip. To install them:
-
-```sh
-    $ pip3 install "package"
+git clone git@github.com:openDAQ/daqcontrol.git
+cd daqcontrol
+python setup.py install
 ```
